@@ -34,7 +34,9 @@ export default function Home({ data }) {
             <Bench>//Bench</Bench>
           </DnDiv>
         </Header>
-        <Dash />
+        <Wrapper>
+          <Dash />
+        </Wrapper>
         <SpellTest>
           <p>Spells:</p>
           <select onChange={getSelectValue}>
@@ -61,28 +63,6 @@ export default function Home({ data }) {
   );
 }
 
-//figure this out
-/*
-{spellInfo.higher_level.isArray() === true ? 
-spellInfo.higher_level.map((level) => 
-{return <p key={uuidv4()}>{level}</p>;})
-:
-{return <p>{spellInfo.higher_level<p>}} */
-
-//replacing select with datalist disables onChange - stupid
-/*
-<input type="text" list="spells" onChange={getSelectValue} />
-<datalist id="spells">
-{data.results.map((spell) => {
-  return (
-    <option key={spell.name} value={spell.index}>
-      {spell.name}
-    </option>
-  );
-})}
-</datalist>
-*/
-
 export async function getStaticProps() {
   const result = await fetch(`https://www.dnd5eapi.co/api/spells/`);
   const data = await result.json();
@@ -99,7 +79,11 @@ const MainStyle = styled.div`
 `;
 
 const Header = styled.div`
+  background: white;
   display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 `;
 
 const DnD = styled.p`
@@ -135,4 +119,8 @@ const SpellTest = styled.div`
   display: flex;
   flex-direction: column;
   width: 80vw;
+`;
+
+const Wrapper = styled.div`
+  margin-top: 5rem;
 `;

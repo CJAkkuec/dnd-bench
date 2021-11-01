@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const Dash = () => {
   return (
@@ -8,7 +9,9 @@ export const Dash = () => {
           <ItemP>Current Character (Name)</ItemP>
         </DashItem>
         <DashItem>
-          <ItemP>New Character</ItemP>
+          <Link href="/newchar">
+            <ItemP>New Character</ItemP>
+          </Link>
         </DashItem>
         <DashItem>
           <ItemP>Character Bench</ItemP>
