@@ -31,6 +31,7 @@ const DashDiv = styled.div`
 `;
 
 const DashItem = styled.div`
+  cursor: pointer;
   padding: 1rem;
   margin: 0.5rem 1.5rem 0.5rem 1.5rem;
   box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);

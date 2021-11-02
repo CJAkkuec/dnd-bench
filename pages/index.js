@@ -37,27 +37,6 @@ export default function Home({ data }) {
         <Wrapper>
           <Dash />
         </Wrapper>
-        <SpellTest>
-          <p>Spells:</p>
-          <select onChange={getSelectValue}>
-            {data.results.map((spell) => {
-              return (
-                <option key={spell.name} value={spell.index}>
-                  {spell.name}
-                </option>
-              );
-            })}
-          </select>
-
-          <div>
-            <p>{spellInfo.name}</p>
-            {spellInfo.desc.map((desc) => {
-              return <p key={uuidv4()}>{desc}</p>;
-            })}
-            <p>{spellInfo.components}</p>
-            <p>{spellInfo.range}</p>
-          </div>
-        </SpellTest>
       </MainStyle>
     </>
   );
@@ -108,17 +87,6 @@ const DnDiv = styled.div`
   width: 100vw;
   z-index: 1;
   box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
-`;
-
-const SpellTest = styled.div`
-  font-size: 0.8rem;
-  margin: 1rem auto;
-  padding: 0.5rem;
-  border-radius: 10px;
-  background: lightgrey;
-  display: flex;
-  flex-direction: column;
-  width: 80vw;
 `;
 
 const Wrapper = styled.div`
