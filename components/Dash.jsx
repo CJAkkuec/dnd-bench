@@ -14,7 +14,9 @@ export const Dash = () => {
           </Link>
         </DashItem>
         <DashItem>
-          <ItemP>Character Bench</ItemP>
+          <Link href="/bench">
+            <ItemP>Character Bench</ItemP>
+          </Link>
         </DashItem>
         <DashItem>
           <ItemP>Battle Mode</ItemP>

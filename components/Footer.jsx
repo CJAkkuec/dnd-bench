@@ -14,8 +14,12 @@ export const Footer = () => {
         <li className={router.pathname == "/mychar" ? "active" : ""}>
           Current
         </li>
-        <li className={router.pathname == "/newchar" ? "active" : ""}>New</li>
-        <li className={router.pathname == "/bench" ? "active" : ""}>Bench</li>
+        <Link href="/newchar">
+          <li className={router.pathname == "/newchar" ? "active" : ""}>New</li>
+        </Link>
+        <Link href="/bench">
+          <li className={router.pathname == "/bench" ? "active" : ""}>Bench</li>
+        </Link>
         <li className={router.pathname == "/battle" ? "active" : ""}>
           Battle Mode
         </li>

@@ -1,61 +1,75 @@
 import styled from "styled-components";
 import Collapsible from "react-collapsible";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import useFormPersist from "react-hook-form-persist";
-import { v4 as uuidv4 } from "uuid";
-import { Footer } from "./components/Footer";
-import { SpellSlotInput } from "./components/SpellSlotInput";
+import { Footer } from "/components/Footer";
+import { SpellSlot } from "../components/SpellSlot";
+import { BasicItemSlot } from "/components/BasicItemSlot";
+import { NoteSlot } from "../components/NoteSlot";
 
 import bgList from "../data/backgrounds-data.json";
 import classList from "../data/classes-data.json";
 import raceList from "../data/races-data.json";
 import alignList from "../data/alignm-data.json";
 
-/* Disable submit on enter */
+export default function NewChar({ bench, addCharacterToBench }) {
+  const { register, handleSubmit, watch, errors, setValue, reset, control } =
+    useForm();
 
-export default function NewChar({ spellList }) {
-  const [spellSlot, setSpellSlot] = useState([]);
+  const {
+    fields: spellFields,
+    append: spellAppend,
+    remove: spellRemove,
+  } = useFieldArray({
+    control,
+    name: "spellSlotArray",
+  });
 
-  const addSlot = () => {
-    setSpellSlot([...spellSlot, null]);
+  const {
+    fields: basicItemFields,
+    append: basicItemAppend,
+    remove: basicItemRemove,
+  } = useFieldArray({
+    control,
+    name: "basicItemSlotArray",
+  });
+
+  const {
+    fields: noteFields,
+    append: noteAppend,
+    remove: noteRemove,
+  } = useFieldArray({
+    control,
+    name: "notesArray",
+  });
+
+  useFormPersist("form", { watch, setValue });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    addCharacterToBench(data);
   };
 
-  const handleSpellSlotChange = (index) => {
-    return (event) => {
-      const newValue = event.target.value;
-      const cloneSpells = [...spellSlot];
-      cloneSpells[index] = newValue;
-      setSpellSlot(cloneSpells);
-    };
+  const checkKeyDown = (e) => {
+    if (e.code === "Enter") e.preventDefault();
   };
 
   const handleReset = () => {
     if (confirm("Are you sure you want to reset the form?")) {
       reset();
-    } else {
     }
   };
-
-  const { register, handleSubmit, watch, errors, setValue, reset } = useForm();
-  useFormPersist("form", { watch, setValue });
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
 
   return (
     <>
       <MainStyle>
+        <Title>Create a new character</Title>
         <MainWrapper>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <fieldset>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            onKeyDown={(e) => checkKeyDown(e)}
+          >
+            <StatField>
               <Collapsible trigger="Basics">
                 <FormWrapper>
                   <Stat>
@@ -135,45 +149,32 @@ export default function NewChar({ spellList }) {
                   </Stat>
                 </FormWrapper>
               </Collapsible>
-            </fieldset>
-
-            <fieldset>
+            </StatField>
+            <StatField>
               <Collapsible trigger="Stats">
                 <FormWrapper>
                   <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="proficiency-bonus">
-                        Proficiency Bonus
-                      </LabelText>
-                      <InputNumber
-                        {...register("proficiency-bonus")}
-                        id="proficiency-bonus"
-                        max="999"
-                        name="proficiency-bonus"
-                      />
-                    </Stat>
-
-                    <Stat>
-                      <LabelText htmlFor="inspiration">Inspiration</LabelText>
-                      <InputNumber
-                        {...register("inspiration")}
-                        id="inspiration"
-                        max="999"
-                        name="inspiration"
-                      />
-                    </Stat>
-                  </StatWrapper>
-
-                  <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="strength">Strength</LabelText>
-                      <InputNumber
-                        {...register("strength")}
-                        id="strength"
-                        max="999"
-                        name="strength"
-                      />
-                    </Stat>
+                    <MainStatWrapper>
+                      <Stat>
+                        <LabelText htmlFor="strength">Strength</LabelText>
+                        <InputNumber
+                          {...register("strength")}
+                          id="strength"
+                          max="999"
+                          min="-999"
+                          name="strength"
+                        />
+                      </Stat>
+                      <Stat>
+                        <LabelText htmlFor="strength-mod">Modifier</LabelText>
+                        <InputNumber
+                          {...register("strength-mod")}
+                          id="strength-mod"
+                          max="999"
+                          name="strength-mod"
+                        />
+                      </Stat>
+                    </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
@@ -201,15 +202,27 @@ export default function NewChar({ spellList }) {
                   </StatWrapper>
 
                   <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="dexterity">Dexterity</LabelText>
-                      <InputNumber
-                        {...register("dexterity")}
-                        id="dexterity"
-                        max="999"
-                        name="dexterity"
-                      />
-                    </Stat>
+                    <MainStatWrapper>
+                      <Stat>
+                        <LabelText htmlFor="dexterity">Dexterity</LabelText>
+                        <InputNumber
+                          {...register("dexterity")}
+                          id="dexterity"
+                          max="999"
+                          name="dexterity"
+                        />
+                      </Stat>
+                      <Stat>
+                        <LabelText htmlFor="dexterity-mod">Modifier</LabelText>
+                        <InputNumber
+                          {...register("dexterity-mod")}
+                          id="dexterity-mod"
+                          max="999"
+                          name="dexterity-mod"
+                        />
+                      </Stat>
+                    </MainStatWrapper>
+
                     <ThrowWrapper>
                       <Stat>
                         <LabelText htmlFor="dex-throw">Saving Throws</LabelText>
@@ -254,15 +267,30 @@ export default function NewChar({ spellList }) {
                   </StatWrapper>
 
                   <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="constitution">Constitution</LabelText>
-                      <InputNumber
-                        {...register("constitution")}
-                        id="constitution"
-                        max="999"
-                        name="constitution"
-                      />
-                    </Stat>
+                    <MainStatWrapper>
+                      <Stat>
+                        <LabelText htmlFor="constitution">
+                          Constitution
+                        </LabelText>
+                        <InputNumber
+                          {...register("constitution")}
+                          id="constitution"
+                          max="999"
+                          name="constitution"
+                        />
+                      </Stat>
+                      <Stat>
+                        <LabelText htmlFor="constitution-mod">
+                          Modifier
+                        </LabelText>
+                        <InputNumber
+                          {...register("constitution-mod")}
+                          id="constitution-mod"
+                          max="999"
+                          name="constitution-mod"
+                        />
+                      </Stat>
+                    </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
@@ -279,15 +307,31 @@ export default function NewChar({ spellList }) {
                   </StatWrapper>
 
                   <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="intelligence">Intelligence</LabelText>
-                      <InputNumber
-                        {...register("intelligence")}
-                        id="intelligence"
-                        max="999"
-                        name="intelligence"
-                      />
-                    </Stat>
+                    <MainStatWrapper>
+                      <Stat>
+                        <LabelText htmlFor="intelligence">
+                          Intelligence
+                        </LabelText>
+                        <InputNumber
+                          {...register("intelligence")}
+                          id="intelligence"
+                          max="999"
+                          name="intelligence"
+                        />
+                      </Stat>
+                      <Stat>
+                        <LabelText htmlFor="intelligence-mod">
+                          Modifier
+                        </LabelText>
+                        <InputNumber
+                          {...register("intelligence-mod")}
+                          id="intelligence-mod"
+                          max="999"
+                          name="intelligence-mod"
+                        />
+                      </Stat>
+                    </MainStatWrapper>
+
                     <ThrowWrapper>
                       <Stat>
                         <LabelText htmlFor="int-throw">Saving Throws</LabelText>
@@ -354,15 +398,26 @@ export default function NewChar({ spellList }) {
                   </StatWrapper>
 
                   <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="wisdom">Wisdom</LabelText>
-                      <InputNumber
-                        {...register("wisdom")}
-                        id="wisdom"
-                        max="999"
-                        name="wisdom"
-                      />
-                    </Stat>
+                    <MainStatWrapper>
+                      <Stat>
+                        <LabelText htmlFor="wisdom">Wisdom</LabelText>
+                        <InputNumber
+                          {...register("wisdom")}
+                          id="wisdom"
+                          max="999"
+                          name="wisdom"
+                        />
+                      </Stat>
+                      <Stat>
+                        <LabelText htmlFor="wisdom-mod">Modifier</LabelText>
+                        <InputNumber
+                          {...register("wisdom-mod")}
+                          id="wisdom-mod"
+                          max="999"
+                          name="wisdom-mod"
+                        />
+                      </Stat>
+                    </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
@@ -429,15 +484,27 @@ export default function NewChar({ spellList }) {
                   </StatWrapper>
 
                   <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="charisma">Charisma</LabelText>
-                      <InputNumber
-                        {...register("charisma")}
-                        id="charisma"
-                        max="999"
-                        name="charisma"
-                      />
-                    </Stat>
+                    <MainStatWrapper>
+                      <Stat>
+                        <LabelText htmlFor="charisma">Charisma</LabelText>
+                        <InputNumber
+                          {...register("charisma")}
+                          id="charisma"
+                          max="999"
+                          name="charisma"
+                        />
+                      </Stat>
+                      <Stat>
+                        <LabelText htmlFor="charisma-mod">Modifier</LabelText>
+                        <InputNumber
+                          {...register("charisma-mod")}
+                          id="charisma-mod"
+                          max="999"
+                          name="charisma-mod"
+                        />
+                      </Stat>
+                    </MainStatWrapper>
+
                     <ThrowWrapper>
                       <Stat>
                         <LabelText htmlFor="char-throw">
@@ -493,24 +560,47 @@ export default function NewChar({ spellList }) {
                         />
                       </Stat>
                     </ThrowWrapper>
+                  </StatWrapper>
+                  <StatWrapper>
+                    <MainStatWrapper>
+                      <Stat>
+                        <LabelText htmlFor="proficiency-bonus">
+                          Proficiency Bonus
+                        </LabelText>
+                        <InputNumber
+                          {...register("proficiency-bonus")}
+                          id="proficiency-bonus"
+                          max="999"
+                          name="proficiency-bonus"
+                        />
+                      </Stat>
 
-                    <Stat>
-                      <LabelText htmlFor="passive-wisdom">
-                        Passive Wisdom
-                      </LabelText>
-                      <InputNumber
-                        {...register("passive-wisdom")}
-                        id="passive-wisdom"
-                        max="999"
-                        name="passive-wisdom"
-                      />
-                    </Stat>
+                      <Stat>
+                        <LabelText htmlFor="inspiration">Inspiration</LabelText>
+                        <InputNumber
+                          {...register("inspiration")}
+                          id="inspiration"
+                          max="999"
+                          name="inspiration"
+                        />
+                      </Stat>
+                      <Stat>
+                        <LabelText htmlFor="passive-wisdom">
+                          Passive Wisdom
+                        </LabelText>
+                        <InputNumber
+                          {...register("passive-wisdom")}
+                          id="passive-wisdom"
+                          max="999"
+                          name="passive-wisdom"
+                        />
+                      </Stat>
+                    </MainStatWrapper>
                   </StatWrapper>
                 </FormWrapper>
               </Collapsible>
-            </fieldset>
-
-            <fieldset>
+            </StatField>
+            <StatField>
               <Collapsible trigger="Vitality">
                 <FormWrapper>
                   <StatWrapper>
@@ -585,9 +675,8 @@ export default function NewChar({ spellList }) {
                   </StatWrapper>
                 </FormWrapper>
               </Collapsible>
-            </fieldset>
-
-            <fieldset>
+            </StatField>
+            <StatField>
               <Collapsible trigger="Flavor">
                 <FormWrapper>
                   <StatWrapper>
@@ -629,28 +718,29 @@ export default function NewChar({ spellList }) {
                   </StatWrapper>
                 </FormWrapper>
               </Collapsible>
-            </fieldset>
-
-            <fieldset>
-              <Collapsible trigger="Attacks&amp;Spells">
+            </StatField>
+            <StatField>
+              <Collapsible trigger="Attacks &amp; Spells">
                 <FormWrapper>
-                  {spellSlot.map((value, index) => {
-                    return (
-                      <SpellSlotInput
-                        spellList={spellList}
-                        value={value}
-                        onChange={handleSpellSlotChange(index)}
-                      />
-                    );
-                  })}
+                  {spellFields.map((field, index) => (
+                    <SpellSlot
+                      register={register}
+                      watch={watch}
+                      index={index}
+                      spellRemove={spellRemove}
+                      key={field.id}
+                    />
+                  ))}
                 </FormWrapper>
-                <Button onClick={addSlot} type="button">
+                <Button
+                  type="button"
+                  onClick={() => spellAppend({ "selected-spell": "" })}
+                >
                   Add
                 </Button>
               </Collapsible>
-            </fieldset>
-
-            <fieldset>
+            </StatField>
+            <StatField>
               <Collapsible trigger="Features &amp; Traits">
                 <FormWrapper>
                   <StatWrapper>
@@ -671,9 +761,8 @@ export default function NewChar({ spellList }) {
                 </FormWrapper>
                 <Button>Add</Button>
               </Collapsible>
-            </fieldset>
-
-            <fieldset>
+            </StatField>
+            <StatField>
               <Collapsible trigger="Other Proficiencies &amp; Languages">
                 <FormWrapper>
                   <StatWrapper>
@@ -694,83 +783,90 @@ export default function NewChar({ spellList }) {
                 </FormWrapper>
                 <Button>Add</Button>
               </Collapsible>
-            </fieldset>
+            </StatField>
 
-            <fieldset>
+            <StatField>
               <Collapsible trigger="Equipment &amp; Character Notes">
                 <FormWrapper>
-                  <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="equipment">Add a Thing</LabelText>
-                      <select
-                        {...register("equipment")}
-                        id="equipment"
-                        name="equipment"
-                      >
-                        <option>Temp</option>
-                      </select>
-                    </Stat>
-                    <ButtonWrapper>
-                      <Button>Delete</Button>
-                      <Button>Add</Button>
-                    </ButtonWrapper>
-                  </StatWrapper>
+                  {basicItemFields.map((field, index) => (
+                    <BasicItemSlot
+                      register={register}
+                      watch={watch}
+                      index={index}
+                      basicItemRemove={basicItemRemove}
+                      key={field.id}
+                    />
+                  ))}
                 </FormWrapper>
+                <Button
+                  type="button"
+                  onClick={() => basicItemAppend({ "selected-item": "" })}
+                >
+                  Add Item
+                </Button>
 
-                <StatWrapper>
-                  <Stat>
-                    <LabelText htmlFor="notes">Character Notes</LabelText>
-                    <textarea
-                      {...register("notes")}
-                      id="notes"
-                      name="notes"
-                    ></textarea>
-                  </Stat>
-                  <ButtonWrapper>
-                    <Button>Delete</Button>
-                    <Button>Add</Button>
-                  </ButtonWrapper>
-                </StatWrapper>
+                <FormWrapper>
+                  {noteFields.map((field, index) => (
+                    <NoteSlot
+                      register={register}
+                      watch={watch}
+                      index={index}
+                      noteRemove={noteRemove}
+                      key={field.id}
+                    />
+                  ))}
+                </FormWrapper>
+                <Button
+                  type="button"
+                  onClick={() => noteAppend({ "added-note": "" })}
+                >
+                  Add Note
+                </Button>
               </Collapsible>
-            </fieldset>
-
-            <input type="submit" value="Submit" />
-            <input
-              type="button"
-              onClick={() => handleReset()}
-              value="Reset All"
-            />
+            </StatField>
+            <InputSubmit value="Submit" />
+            <InputReset onClick={() => handleReset()} value="Reset All" />
           </form>
-          <Footer />
         </MainWrapper>
+        <Footer />
       </MainStyle>
     </>
   );
 }
 
-export async function getStaticProps() {
-  const spellResult = await fetch(`https://www.dnd5eapi.co/api/spells/`);
-  const spellList = await spellResult.json();
-
-  return {
-    props: {
-      spellList,
-    },
-  };
-}
-
 const MainStyle = styled.div`
   padding: 0;
   margin: 0;
-  font-family: Roboto, Rokkit;
+  font-family: "Roboto", "Rokkitt";
 `;
 
 const LabelText = styled.p`
   margin: 0.2rem 0 0.2rem 0;
 `;
 const InputNumber = styled.input.attrs({ type: "number" })`
-  width: 3rem;
+  width: 2rem;
   font-size: 0.7rem;
+`;
+
+const InputSubmit = styled.input.attrs({ type: "submit" })`
+  background: red;
+  color: white;
+  border: none;
+  padding: 0.4rem;
+  width: auto;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-right: 0.4rem;
+`;
+
+const InputReset = styled.input.attrs({ type: "button" })`
+  background: grey;
+  color: white;
+  border: none;
+  padding: 0.4rem;
+  width: auto;
+  font-size: 0.9rem;
+  text-align: center;
 `;
 
 const FormWrapper = styled.div`
@@ -778,6 +874,8 @@ const FormWrapper = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.3rem;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
 `;
 
 const ThrowWrapper = styled.div`
@@ -785,7 +883,14 @@ const ThrowWrapper = styled.div`
   flex-direction: column;
   background: lightgrey;
   font-size: 0.7rem;
-  padding: 0.2rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.4rem;
+`;
+
+const MainStatWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0rem 0.2rem 0.4rem 0.4rem;
 `;
 
 const StatWrapper = styled.div`
@@ -793,11 +898,12 @@ const StatWrapper = styled.div`
   flex-direction: column;
   border: 1px solid black;
   padding: 0.5rem;
-  width: 45vw;
+  width: 42vw;
 `;
 
 const MainWrapper = styled.div`
   margin-bottom: 5rem;
+  padding: 1rem;
 `;
 
 const Button = styled.button`
@@ -811,3 +917,16 @@ const ButtonWrapper = styled.div`
 `;
 
 const Stat = styled.label``;
+
+const StatField = styled.fieldset`
+  padding: 0;
+  border: none;
+`;
+
+const Title = styled.div`
+  margin-bottom: 1rem;
+  background: grey;
+  color: white;
+  padding: 0.4rem;
+  width: 50vw;
+`;

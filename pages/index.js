@@ -1,60 +1,24 @@
-import Link from "next/link";
 import styled from "styled-components";
-import { Dash } from "./components/Dash";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid"; //why is this being weird when I use it for the dropdown
+import { Dash } from "/components/Dash";
 
-export default function Home({ data }) {
-  const [spellInfo, setSpellInfo] = useState({
-    name: "Select your spell",
-    desc: ["Description will be here"],
-  });
-
-  const getSelectValue = (spell) => {
-    const spellIndex = spell.target.value;
-
-    async function fetchSpellData() {
-      const spellResult = await fetch(
-        `https://www.dnd5eapi.co/api/spells/${spellIndex}`
-      );
-      const spellData = await spellResult.json();
-      setSpellInfo(spellData);
-      console.log(spellData);
-    }
-
-    fetchSpellData();
-  };
-
+export default function Home({}) {
   return (
-    <>
-      <MainStyle>
-        <Header>
-          <DnDiv>
-            <DnD>D&amp;D</DnD>
-            <Bench>//Bench</Bench>
-          </DnDiv>
-        </Header>
-        <Wrapper>
-          <Dash />
-        </Wrapper>
-      </MainStyle>
-    </>
+    <MainStyle>
+      <Header>
+        <DnDiv>
+          <DnD>D&amp;D</DnD>
+          <Bench>//Bench</Bench>
+        </DnDiv>
+      </Header>
+      <Wrapper>
+        <Dash />
+      </Wrapper>
+    </MainStyle>
   );
 }
 
-export async function getStaticProps() {
-  const result = await fetch(`https://www.dnd5eapi.co/api/spells/`);
-  const data = await result.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
 const MainStyle = styled.div`
-  font-family: Roboto, Rokkit;
+  font-family: Roboto;
 `;
 
 const Header = styled.div`
@@ -67,14 +31,13 @@ const Header = styled.div`
 
 const DnD = styled.p`
   color: red;
-  font-family: Rokkit;
+  font-family: serif;
   font-size: 25pt;
   font-weight: bolder;
   margin: 0;
 `;
 
 const Bench = styled.p`
-  font-family: Roboto;
   font-size: 20pt;
   font-weight: 100;
   margin: 0;
