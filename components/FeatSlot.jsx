@@ -85,29 +85,3 @@ const FeatSelect = styled.select`
 const FeatSlotContainer = styled.div`
   font-size: 0.8rem;
 `;
-
-/*  <p>{selectedFeat.name}</p>
-{selectedFeat.prerequisite ? (
-<>
-{selectedFeat.prerequisite.spell ? (
-<div>Prerequisite:{selectedFeat.prerequisite.spell}</div>
-) : (
-""
-)}
-{selectedFeat.prerequisite.race ? (
-<div>
-Prerequisite:{selectedFeat.prerequisite.race.name}
-</div>
-) : (
-""
-)}
-</>
-) : (
-""
-)}
-<p>Type: {selectedFeat.featureType}</p>
-<p>{selectedFeat.entries}</p>
-              
-doesn't work*/
-
-//How do I check if a JSON entry is an array, object, etc?
