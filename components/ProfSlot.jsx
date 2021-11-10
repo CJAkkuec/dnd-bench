@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import slugify from "slugify";
 
-export const NoteSlot = ({ register, index, noteRemove }) => {
+export const ProfSlot = ({ register, index, profRemove }) => {
   return (
     <StatWrapper>
       <Stat>
-        <LabelText htmlFor={`notesArray.${index}.added-note`}>
+        <LabelText htmlFor={`profSlotArray.${index}.proficiencies`}>
           Note {`${index + 1}`}
         </LabelText>
-        <NoteInput
-          {...register(`notesArray.${index}.added-note`)}
-          placeholder="Add a note"
-        ></NoteInput>
-        <Button type="button" onClick={() => noteRemove(index)}>
+        <ProfInput
+          {...register(`profSlotArray.${index}.proficiencies`)}
+          placeholder="Add proficiencies, separated by commas"
+        ></ProfInput>
+        <Button type="button" onClick={() => profRemove(index)}>
           Delete
         </Button>
       </Stat>
@@ -46,7 +46,7 @@ const Button = styled.button`
   margin-top: 0.3rem;
 `;
 
-const NoteInput = styled.textarea`
+const ProfInput = styled.textarea`
   width: 100%;
   font-family: Roboto;
 `;

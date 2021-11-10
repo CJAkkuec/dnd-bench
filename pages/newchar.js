@@ -1,11 +1,17 @@
 import styled from "styled-components";
+
 import Collapsible from "react-collapsible";
 import { useForm, useFieldArray } from "react-hook-form";
 import useFormPersist from "react-hook-form-persist";
+
 import { Footer } from "/components/Footer";
 import { SpellSlot } from "../components/SpellSlot";
 import { BasicItemSlot } from "/components/BasicItemSlot";
 import { NoteSlot } from "../components/NoteSlot";
+import { LanguageSlot } from "../components/LanguageSlot";
+import { AttackSlot } from "../components/AttackSlot";
+import { ProfSlot } from "../components/ProfSlot";
+import { FeatSlot } from "../components/FeatSlot";
 
 import bgList from "../data/backgrounds-data.json";
 import classList from "../data/classes-data.json";
@@ -13,8 +19,53 @@ import raceList from "../data/races-data.json";
 import alignList from "../data/alignm-data.json";
 
 export default function NewChar({ bench, addCharacterToBench }) {
-  const { register, handleSubmit, watch, errors, setValue, reset, control } =
-    useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    setValue,
+    reset,
+    control,
+  } = useForm();
+
+  //Input Field Arrays
+
+  const {
+    fields: featFields,
+    append: featAppend,
+    remove: featRemove,
+  } = useFieldArray({
+    control,
+    name: "featSlotArray",
+  });
+
+  const {
+    fields: profFields,
+    append: profAppend,
+    remove: profRemove,
+  } = useFieldArray({
+    control,
+    name: "profSlotArray",
+  });
+
+  const {
+    fields: langFields,
+    append: langAppend,
+    remove: langRemove,
+  } = useFieldArray({
+    control,
+    name: "languageSlotArray",
+  });
+
+  const {
+    fields: attackFields,
+    append: attackAppend,
+    remove: attackRemove,
+  } = useFieldArray({
+    control,
+    name: "attackSlotArray",
+  });
 
   const {
     fields: spellFields,
@@ -43,15 +94,13 @@ export default function NewChar({ bench, addCharacterToBench }) {
     name: "notesArray",
   });
 
+  //Form Functions
+
   useFormPersist("form", { watch, setValue });
 
   const onSubmit = (data) => {
     console.log(data);
     addCharacterToBench(data);
-  };
-
-  const checkKeyDown = (e) => {
-    if (e.code === "Enter") e.preventDefault();
   };
 
   const handleReset = () => {
@@ -60,24 +109,38 @@ export default function NewChar({ bench, addCharacterToBench }) {
     }
   };
 
+  const checkKeyDown = (e) => {
+    if (e.code === "Enter") e.preventDefault();
+  };
+
+  //Form
+
   return (
     <>
       <MainStyle>
         <Title>Create a new character</Title>
+        <Intro>
+          This is the character creation form. The only input required is your
+          character's name. Please keep in mind that if you don't provide any
+          information, some features of this app may not be working as intended.
+        </Intro>
         <MainWrapper>
           <form
             onSubmit={handleSubmit(onSubmit)}
             onKeyDown={(e) => checkKeyDown(e)}
           >
             <StatField>
+              {errors.charname?.type === "required" && (
+                <Alert>Please name your character</Alert>
+              )}
               <Collapsible trigger="Basics">
                 <FormWrapper>
                   <Stat>
-                    <LabelText htmlFor="charname">Character Name</LabelText>
+                    <LabelText htmlFor="charame">Character Name</LabelText>
                     <input
                       type="text"
                       name="charname"
-                      {...register("charname")}
+                      {...register("charname", { required: true })}
                       id="charname"
                     />
                   </Stat>
@@ -602,8 +665,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
             </StatField>
             <StatField>
               <Collapsible trigger="Vitality">
-                <FormWrapper>
-                  <StatWrapper>
+                <VitallWrapper>
+                  <Vitwrapper>
                     <Stat>
                       <LabelText htmlFor="armor-class">Armor Class</LabelText>
                       <InputNumber
@@ -632,7 +695,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
                         name="speed"
                       />
                     </Stat>
-
+                  </Vitwrapper>
+                  <Vitwrapper>
                     <Stat>
                       <LabelText htmlFor="hp">Hit Points</LabelText>
                       <InputNumber
@@ -652,7 +716,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
                         name="temp-hp"
                       />
                     </Stat>
-
+                  </Vitwrapper>
+                  <Vitwrapper>
                     <Stat>
                       <LabelText htmlFor="hit-dice">Hit Dice</LabelText>
                       <InputNumber
@@ -672,50 +737,48 @@ export default function NewChar({ bench, addCharacterToBench }) {
                         name="death-saves"
                       />
                     </Stat>
-                  </StatWrapper>
-                </FormWrapper>
+                  </Vitwrapper>
+                </VitallWrapper>
               </Collapsible>
             </StatField>
             <StatField>
               <Collapsible trigger="Flavor">
                 <FormWrapper>
-                  <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="personality">Personality</LabelText>
-                      <textarea
-                        {...register("personality")}
-                        id="personality"
-                        name="personality"
-                      ></textarea>
-                    </Stat>
+                  <Stat>
+                    <LabelText htmlFor="personality">Personality</LabelText>
+                    <FlavorText
+                      {...register("personality")}
+                      id="personality"
+                      name="personality"
+                    ></FlavorText>
+                  </Stat>
 
-                    <Stat>
-                      <LabelText htmlFor="ideals">Ideals</LabelText>
-                      <textarea
-                        {...register("ideals")}
-                        id="ideals"
-                        name="ideals"
-                      ></textarea>
-                    </Stat>
+                  <Stat>
+                    <LabelText htmlFor="ideals">Ideals</LabelText>
+                    <FlavorText
+                      {...register("ideals")}
+                      id="ideals"
+                      name="ideals"
+                    ></FlavorText>
+                  </Stat>
 
-                    <Stat>
-                      <LabelText htmlFor="bonds">Bonds</LabelText>
-                      <textarea
-                        {...register("bonds")}
-                        id="bonds"
-                        name="bonds"
-                      ></textarea>
-                    </Stat>
+                  <Stat>
+                    <LabelText htmlFor="bonds">Bonds</LabelText>
+                    <FlavorText
+                      {...register("bonds")}
+                      id="bonds"
+                      name="bonds"
+                    ></FlavorText>
+                  </Stat>
 
-                    <Stat>
-                      <LabelText htmlFor="flaws">Flaws</LabelText>
-                      <textarea
-                        {...register("flaws")}
-                        id="flaws"
-                        name="flaws"
-                      ></textarea>
-                    </Stat>
-                  </StatWrapper>
+                  <Stat>
+                    <LabelText htmlFor="flaws">Flaws</LabelText>
+                    <FlavorText
+                      {...register("flaws")}
+                      id="flaws"
+                      name="flaws"
+                    ></FlavorText>
+                  </Stat>
                 </FormWrapper>
               </Collapsible>
             </StatField>
@@ -736,52 +799,82 @@ export default function NewChar({ bench, addCharacterToBench }) {
                   type="button"
                   onClick={() => spellAppend({ "selected-spell": "" })}
                 >
-                  Add
+                  Add Spell
+                </Button>
+                <FormWrapper>
+                  {attackFields.map((field, index) => (
+                    <AttackSlot
+                      register={register}
+                      index={index}
+                      attackRemove={attackRemove}
+                      key={field.id}
+                    />
+                  ))}
+                </FormWrapper>
+                <Button
+                  type="button"
+                  onClick={() => attackAppend({ "new-attack": "" })}
+                >
+                  Add Attack
                 </Button>
               </Collapsible>
             </StatField>
             <StatField>
-              <Collapsible trigger="Features &amp; Traits">
+              <Collapsible trigger="Features, Traits &amp; Invocations">
                 <FormWrapper>
-                  <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="feats-traits">Add a Feat</LabelText>
-                      <select
-                        {...register("feats-traits")}
-                        id="feats-traits"
-                        name="feats-traits"
-                      >
-                        <option>Temp</option>
-                      </select>
-                    </Stat>
-                    <ButtonWrapper>
-                      <Button>Delete</Button>
-                    </ButtonWrapper>
-                  </StatWrapper>
+                  {featFields.map((field, index) => (
+                    <FeatSlot
+                      register={register}
+                      watch={watch}
+                      index={index}
+                      featRemove={featRemove}
+                      key={field.id}
+                    />
+                  ))}
                 </FormWrapper>
-                <Button>Add</Button>
+                <Button
+                  type="button"
+                  onClick={() => featAppend({ "selected-feat": "" })}
+                >
+                  Add Feature
+                </Button>
               </Collapsible>
             </StatField>
             <StatField>
               <Collapsible trigger="Other Proficiencies &amp; Languages">
                 <FormWrapper>
-                  <StatWrapper>
-                    <Stat>
-                      <LabelText htmlFor="other-prof">Add a Thing</LabelText>
-                      <select
-                        {...register("other-prof")}
-                        id="other-prof"
-                        name="other-prof"
-                      >
-                        <option>Temp</option>
-                      </select>
-                    </Stat>
-                    <ButtonWrapper>
-                      <Button>Delete</Button>
-                    </ButtonWrapper>
-                  </StatWrapper>
+                  {profFields.map((field, index) => (
+                    <ProfSlot
+                      register={register}
+                      index={index}
+                      profRemove={profRemove}
+                      key={field.id}
+                    />
+                  ))}
                 </FormWrapper>
-                <Button>Add</Button>
+                <Button
+                  type="button"
+                  onClick={() => profAppend({ proficiencies: "" })}
+                >
+                  Add Proficiencies
+                </Button>
+                <FormWrapper>
+                  {langFields.map((field, index) => (
+                    <LanguageSlot
+                      register={register}
+                      watch={watch}
+                      index={index}
+                      langRemove={langRemove}
+                      key={field.id}
+                    />
+                  ))}
+                </FormWrapper>
+                <Button
+                  type="button"
+                  onClick={() => langAppend({ "selected-language": "" })}
+                >
+                  Add Language
+                </Button>
               </Collapsible>
             </StatField>
 
@@ -809,7 +902,6 @@ export default function NewChar({ bench, addCharacterToBench }) {
                   {noteFields.map((field, index) => (
                     <NoteSlot
                       register={register}
-                      watch={watch}
                       index={index}
                       noteRemove={noteRemove}
                       key={field.id}
@@ -824,8 +916,10 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </Button>
               </Collapsible>
             </StatField>
-            <InputSubmit value="Submit" />
-            <InputReset onClick={() => handleReset()} value="Reset All" />
+            <ButtonWrapper>
+              <InputSubmit value="Submit" />
+              <InputReset onClick={() => handleReset()} value="Reset All" />
+            </ButtonWrapper>
           </form>
         </MainWrapper>
         <Footer />
@@ -833,6 +927,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
     </>
   );
 }
+
+//Styles
 
 const MainStyle = styled.div`
   padding: 0;
@@ -856,7 +952,6 @@ const InputSubmit = styled.input.attrs({ type: "submit" })`
   width: auto;
   font-size: 0.9rem;
   text-align: center;
-  margin-right: 0.4rem;
 `;
 
 const InputReset = styled.input.attrs({ type: "button" })`
@@ -874,7 +969,7 @@ const FormWrapper = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.3rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-top: 0.3rem;
 `;
 
@@ -882,7 +977,7 @@ const ThrowWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background: lightgrey;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   padding: 0.2rem 0.2rem 0.2rem 0.4rem;
 `;
 
@@ -896,14 +991,14 @@ const MainStatWrapper = styled.div`
 const StatWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid grey;
   padding: 0.5rem;
-  width: 42vw;
+  width: 43vw;
 `;
 
 const MainWrapper = styled.div`
-  margin-bottom: 5rem;
-  padding: 1rem;
+  margin: 0 0 5rem 0;
+  padding: 0 1rem 1rem 1rem;
 `;
 
 const Button = styled.button`
@@ -913,7 +1008,7 @@ const Button = styled.button`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  gap: 0.3rem;
+  gap: 0.5rem;
 `;
 
 const Stat = styled.label``;
@@ -929,4 +1024,30 @@ const Title = styled.div`
   color: white;
   padding: 0.4rem;
   width: 50vw;
+`;
+
+const Alert = styled.div`
+  color: red;
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+`;
+
+const Intro = styled.div`
+  margin: 1rem;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+`;
+
+const FlavorText = styled.textarea`
+  width: 100%;
+  height: 2.5rem;
+`;
+
+const Vitwrapper = styled.div`
+  font-size: 0.8rem;
+`;
+
+const VitallWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

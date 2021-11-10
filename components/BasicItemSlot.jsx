@@ -27,9 +27,6 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
             );
           })}
         </ItemSelect>
-        <Button type="button" onClick={() => basicItemRemove(index)}>
-          Delete
-        </Button>
       </Stat>
       <Stat>
         <div>
@@ -45,6 +42,11 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
           )}
         </div>
       </Stat>
+      <ButtonWrapper>
+        <Button type="button" onClick={() => basicItemRemove(index)}>
+          Delete
+        </Button>
+      </ButtonWrapper>
     </StatWrapper>
   );
 };
@@ -73,6 +75,11 @@ const Button = styled.button`
   font-size: 0.8rem;
   text-align: center;
   margin-top: 0.3rem;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 0.3rem;
 `;
 
 const ItemSelect = styled.select`

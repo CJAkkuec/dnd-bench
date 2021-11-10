@@ -58,10 +58,11 @@ const Stat = styled.label``;
 const StatWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid grey;
   padding: 0.5rem;
   width: 43vw;
   height: 100%;
+  margin-bottom: 0.4rem;
 `;
 
 const Button = styled.button`
