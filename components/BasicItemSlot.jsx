@@ -3,7 +3,7 @@ import basicItemsList from "../data/basicitems-data.json";
 import slugify from "slugify";
 
 export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
-  const value = watch(`basicItemSlotArray.${index}.selected-item`);
+  const value = watch(`basicItemSlotArray.${index}.selectedItem`);
   const selectedItem = basicItemsList.find(
     (basicItem) => slugify(basicItem.name) === value
   );
@@ -11,10 +11,10 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
   return (
     <StatWrapper>
       <Stat>
-        <LabelText htmlFor={`basicItemSlotArray.${index}.selected-item`}>
+        <LabelText htmlFor={`basicItemSlotArray.${index}.selectedItem`}>
           Item {`${index + 1}`}
         </LabelText>
-        <ItemSelect {...register(`basicItemSlotArray.${index}.selected-item`)}>
+        <ItemSelect {...register(`basicItemSlotArray.${index}.selectedItem`)}>
           <option value="">Select an item</option>
           {basicItemsList.map((basicItem) => {
             return (

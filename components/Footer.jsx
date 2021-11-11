@@ -11,9 +11,11 @@ export const Footer = () => {
         <Link href="/">
           <li className={router.pathname == "/" ? "active" : ""}>Dash</li>
         </Link>
-        <li className={router.pathname == "/mychar" ? "active" : ""}>
-          Current
-        </li>
+        <Link href="/mychar">
+          <li className={router.pathname == "/mychar" ? "active" : ""}>
+            Current
+          </li>
+        </Link>
         <Link href="/newchar">
           <li className={router.pathname == "/newchar" ? "active" : ""}>New</li>
         </Link>

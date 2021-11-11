@@ -1,20 +1,32 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export const Dash = () => {
+export const Dash = ({ bench }) => {
+  const currentCharacter = bench.characters.find(
+    (character) => character.id === bench.activeCharacterID
+  );
+
   return (
     <>
       <DashDiv>
         <DashItem>
-          <ItemP>Current Character (Name)</ItemP>
+          <Link passHref href="/mychar">
+            <ItemP>
+              Current Character (
+              {currentCharacter !== undefined
+                ? currentCharacter.charname
+                : "None"}
+              )
+            </ItemP>
+          </Link>
         </DashItem>
         <DashItem>
-          <Link href="/newchar">
+          <Link passHref href="/newchar">
             <ItemP>New Character</ItemP>
           </Link>
         </DashItem>
         <DashItem>
-          <Link href="/bench">
+          <Link passHref href="/bench">
             <ItemP>Character Bench</ItemP>
           </Link>
         </DashItem>

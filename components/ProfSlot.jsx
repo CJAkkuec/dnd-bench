@@ -5,11 +5,11 @@ export const ProfSlot = ({ register, index, profRemove }) => {
   return (
     <StatWrapper>
       <Stat>
-        <LabelText htmlFor={`profSlotArray.${index}.proficiencies`}>
+        <LabelText htmlFor={`profSlotArray.${index}.proficiency`}>
           Note {`${index + 1}`}
         </LabelText>
         <ProfInput
-          {...register(`profSlotArray.${index}.proficiencies`)}
+          {...register(`profSlotArray.${index}.proficiency`)}
           placeholder="Add proficiencies, separated by commas"
         ></ProfInput>
         <Button type="button" onClick={() => profRemove(index)}>

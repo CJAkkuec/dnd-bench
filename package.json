@@ -16,6 +16,7 @@
     "react-hook-form": "^7.18.1",
     "react-hook-form-persist": "^2.1.0",
     "react-select": "^5.2.0",
+    "react-toggle": "^4.1.2",
     "slugify": "^1.6.2",
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2"

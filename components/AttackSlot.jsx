@@ -2,33 +2,31 @@ import styled from "styled-components";
 
 export const AttackSlot = ({ register, index, attackRemove }) => {
   return (
-    <>
-      <StatWrapper>
-        <Stat>
-          <LabelText htmlFor={`attackSlotArray.${index}.attack-name`}>
-            Name
-          </LabelText>
-          <InputText {...register(`attackSlotArray.${index}.attack-name`)} />
-        </Stat>
-        <Stat>
-          <LabelText htmlFor={`attackSlotArray.${index}.attack-dice`}>
-            Dice
-          </LabelText>
-          <InputText {...register(`attackSlotArray.${index}.attack-dice`)} />
-        </Stat>
-        <Stat>
-          <LabelText htmlFor={`attackSlotArray.${index}.attack-range`}>
-            Range
-          </LabelText>
-          <InputText {...register(`attackSlotArray.${index}.attack-range`)} />
-        </Stat>
-        <ButtonWrapper>
-          <Button type="button" onClick={() => attackRemove(index)}>
-            Delete
-          </Button>
-        </ButtonWrapper>
-      </StatWrapper>
-    </>
+    <StatWrapper>
+      <Stat>
+        <LabelText htmlFor={`attackSlotArray.${index}.attackName`}>
+          Name
+        </LabelText>
+        <InputText {...register(`attackSlotArray.${index}.attackName`)} />
+      </Stat>
+      <Stat>
+        <LabelText htmlFor={`attackSlotArray.${index}.attackDice`}>
+          Dice
+        </LabelText>
+        <InputText {...register(`attackSlotArray.${index}.attackDice`)} />
+      </Stat>
+      <Stat>
+        <LabelText htmlFor={`attackSlotArray.${index}.attackRange`}>
+          Range
+        </LabelText>
+        <InputText {...register(`attackSlotArray.${index}.attackRange`)} />
+      </Stat>
+      <ButtonWrapper>
+        <Button type="button" onClick={() => attackRemove(index)}>
+          Delete
+        </Button>
+      </ButtonWrapper>
+    </StatWrapper>
   );
 };
 

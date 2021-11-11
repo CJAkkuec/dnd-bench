@@ -3,7 +3,7 @@ import featList from "/data/featsinv-data.json";
 import slugify from "slugify";
 
 export const FeatSlot = ({ register, index, watch, featRemove }) => {
-  const value = watch(`featSlotArray.${index}.selected-feat`);
+  const value = watch(`featSlotArray.${index}.selectedFeat`);
   const selectedFeat = featList.find((feat) => slugify(feat.name) === value);
   console.log(selectedFeat);
 
@@ -11,10 +11,10 @@ export const FeatSlot = ({ register, index, watch, featRemove }) => {
     <>
       <StatWrapper>
         <Stat>
-          <LabelText htmlFor={`featSlotArray.${index}.selected-feat`}>
+          <LabelText htmlFor={`featSlotArray.${index}.selectedFeat`}>
             Feature {`${index + 1}`}
           </LabelText>
-          <FeatSelect {...register(`featSlotArray.${index}.selected-feat`)}>
+          <FeatSelect {...register(`featSlotArray.${index}.selectedFeat`)}>
             <option value="">Select a Feature</option>
             {featList.map((feat) => {
               return (
@@ -85,29 +85,3 @@ const FeatSelect = styled.select`
 const FeatSlotContainer = styled.div`
   font-size: 0.8rem;
 `;
-
-/*  <p>{selectedFeat.name}</p>
-{selectedFeat.prerequisite ? (
-<>
-{selectedFeat.prerequisite.spell ? (
-<div>Prerequisite:{selectedFeat.prerequisite.spell}</div>
-) : (
-""
-)}
-{selectedFeat.prerequisite.race ? (
-<div>
-Prerequisite:{selectedFeat.prerequisite.race.name}
-</div>
-) : (
-""
-)}
-</>
-) : (
-""
-)}
-<p>Type: {selectedFeat.featureType}</p>
-<p>{selectedFeat.entries}</p>
-              
-doesn't work*/
-
-//How do I check if a JSON entry is an array, object, etc?
