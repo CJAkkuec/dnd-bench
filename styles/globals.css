@@ -14,3 +14,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.active {
+  color: red;
+}
+
+.Collapsible {
+  padding: 0.4rem;
+  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
+  margin-bottom: 1rem;
+}
+
+.Collapsible__trigger.is-open {
+  background: lightgrey;
+}

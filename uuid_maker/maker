@@ -1,0 +1,7 @@
+import basicItemList from "/uuid_maker/basicitems-data_uuid.json";
+import { v4 as uuidv4 } from "uuid";
+
+const newList = basicItemList.map((obj) => ({ ...obj, id: uuidv4() }));
+const jsonList = JSON.stringify(newList);
+console.log(jsonList);
+

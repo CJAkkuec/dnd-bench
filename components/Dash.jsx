@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const Dash = () => {
   return (
@@ -8,10 +9,14 @@ export const Dash = () => {
           <ItemP>Current Character (Name)</ItemP>
         </DashItem>
         <DashItem>
-          <ItemP>New Character</ItemP>
+          <Link href="/newchar">
+            <ItemP>New Character</ItemP>
+          </Link>
         </DashItem>
         <DashItem>
-          <ItemP>Character Bench</ItemP>
+          <Link href="/bench">
+            <ItemP>Character Bench</ItemP>
+          </Link>
         </DashItem>
         <DashItem>
           <ItemP>Battle Mode</ItemP>
@@ -28,6 +33,7 @@ const DashDiv = styled.div`
 `;
 
 const DashItem = styled.div`
+  cursor: pointer;
   padding: 1rem;
   margin: 0.5rem 1.5rem 0.5rem 1.5rem;
   box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
