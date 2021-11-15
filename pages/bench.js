@@ -2,9 +2,7 @@ import styled from "styled-components";
 import { Footer } from "/components/Footer";
 import Toggle from "react-toggle";
 
-/*DELETE FUNCTION!!!!!!*/
-
-export default function Bench({ bench, setActiveCharacter }) {
+export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
   return (
     <>
       <MainStyle>
@@ -28,6 +26,9 @@ export default function Bench({ bench, setActiveCharacter }) {
                     }}
                   />
                 </ToggleDiv>
+                <Remove onClick={() => removeCharacter(benchItem.id)}>
+                  Remove
+                </Remove>
               </BenchDiv>
             ))
           ) : (
@@ -70,7 +71,8 @@ const Wrapper = styled.div`
 
 const BenchDiv = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   cursor: pointer;
   padding: 1rem;
@@ -84,4 +86,11 @@ const Empty = styled.div`
 
 const Name = styled.div``;
 
-const ToggleDiv = styled.div``;
+const ToggleDiv = styled.div`
+  display: flex;
+`;
+
+const Remove = styled.div`
+  color: grey;
+  font-size: 0.8rem;
+`;

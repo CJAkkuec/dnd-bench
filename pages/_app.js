@@ -20,6 +20,13 @@ function MyApp({ Component, pageProps }) {
     });
   }
 
+  function removeCharacter(id) {
+    const updatedBench = bench.characters.filter(
+      (character) => character.id !== id
+    );
+    setBench({ ...bench, characters: updatedBench });
+  }
+
   const setActiveCharacter = (activeCharacterID) => {
     setBench({ ...bench, activeCharacterID: activeCharacterID });
   };
@@ -30,6 +37,7 @@ function MyApp({ Component, pageProps }) {
       bench={bench}
       addCharacterToBench={addCharacterToBench}
       setActiveCharacter={setActiveCharacter}
+      removeCharacter={removeCharacter}
     />
   );
 }

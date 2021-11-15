@@ -19,7 +19,7 @@ export const SpellSlot = ({ register, index, watch, spellRemove }) => {
             <option value="">Select a spell</option>
             {spellList.map((spell) => {
               return (
-                <option key={slugify(spell.name)} value={spell.name}>
+                <option key={slugify(spell.name)} value={slugify(spell.name)}>
                   {spell.name}
                 </option>
               );
