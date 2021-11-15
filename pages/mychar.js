@@ -11,7 +11,7 @@ export default function MyChar({ bench }) {
       <MainStyle>
         <MainWrapper>
           {currentCharacter === undefined ? (
-            <Empty>It's empty here ...</Empty>
+            <Empty>It&#39;s empty here ...</Empty>
           ) : (
             <>
               <CharacterName>{currentCharacter.charname}</CharacterName>

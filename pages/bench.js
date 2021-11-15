@@ -32,7 +32,7 @@ export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
               </BenchDiv>
             ))
           ) : (
-            <Empty>It's empty here ...</Empty>
+            <Empty>It&#39;s empty here ...</Empty>
           )}
         </Wrapper>
         <Footer />
