@@ -300,7 +300,11 @@ export default function MyChar({ bench, getCurrentCharacter }) {
                 <ConditionalWrapper>
                   <p>Spells</p>
                   {currentCharacter.spellSlotArray.map((spellSlot) => {
-                    return <div>{spellSlot.selectedSpell}</div>;
+                    return (
+                      <div key={spellSlot.selectedSpell}>
+                        {spellSlot.selectedSpell}
+                      </div>
+                    );
                   })}
                 </ConditionalWrapper>
                 <ConditionalWrapper>
@@ -318,21 +322,33 @@ export default function MyChar({ bench, getCurrentCharacter }) {
                 <ConditionalWrapper>
                   <p>Feats/etc</p>
                   {currentCharacter.featSlotArray.map((featSlot) => {
-                    return <div>{featSlot.selectedFeat}</div>;
+                    return (
+                      <div key={featSlot.selectedFeat}>
+                        {featSlot.selectedFeat}
+                      </div>
+                    );
                   })}
                 </ConditionalWrapper>
                 <ConditionalWrapper>
                   <p>Proficiencies</p>
                   {currentCharacter.proficiencySlotArray.map(
                     (proficiencySlot) => {
-                      return <div>{proficiencySlot.proficiencies}</div>;
+                      return (
+                        <div key={proficiencySlot.proficiencies}>
+                          {proficiencySlot.proficiencies}
+                        </div>
+                      );
                     }
                   )}
                 </ConditionalWrapper>
                 <ConditionalWrapper>
                   <p>Languages</p>
                   {currentCharacter.languageSlotArray.map((languageSlot) => {
-                    return <div>{languageSlot.selectedLanguage}</div>;
+                    return (
+                      <div key={languageSlot.selectedLanguage}>
+                        {languageSlot.selectedLanguage}
+                      </div>
+                    );
                   })}
                 </ConditionalWrapper>
               </FieldWrapper>
@@ -342,7 +358,7 @@ export default function MyChar({ bench, getCurrentCharacter }) {
                   <p>Basic Items</p>
                   {currentCharacter.basicItemSlotArray.map((itemSlot) => {
                     return (
-                      <div>
+                      <div key={itemSlot.selectedItem}>
                         <p>{itemSlot.selectedItem}</p>
                         <p>x{itemSlot.selectedItemAmount}</p>
                       </div>
@@ -352,7 +368,9 @@ export default function MyChar({ bench, getCurrentCharacter }) {
                 <ConditionalWrapper>
                   <p>Character Notes</p>
                   {currentCharacter.notesArray.map((noteSlot) => {
-                    return <div>{noteSlot.addedNote}</div>;
+                    return (
+                      <div key={noteSlot.addedNote}>{noteSlot.addedNote}</div>
+                    );
                   })}
                 </ConditionalWrapper>
               </FieldWrapper>
