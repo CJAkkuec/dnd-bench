@@ -2,7 +2,7 @@ import styled from "styled-components";
 import languageList from "/data/languages-data.json";
 import slugify from "slugify";
 
-export const LanguageSlot = ({ register, index, watch, langRemove }) => {
+export const LanguageSlot = ({ register, index, watch, languageRemove }) => {
   const value = watch(`languageSlotArray.${index}.selectedLanguage`);
   const selectedLanguage = languageList.find(
     (language) => slugify(language.name) === value
@@ -54,7 +54,7 @@ export const LanguageSlot = ({ register, index, watch, langRemove }) => {
         </div>
       </Stat>
       <ButtonWrapper>
-        <Button type="button" onClick={() => langRemove(index)}>
+        <Button type="button" onClick={() => languageRemove(index)}>
           Delete
         </Button>
       </ButtonWrapper>

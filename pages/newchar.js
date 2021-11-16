@@ -10,7 +10,7 @@ import { BasicItemSlot } from "/components/BasicItemSlot";
 import { NoteSlot } from "../components/NoteSlot";
 import { LanguageSlot } from "../components/LanguageSlot";
 import { AttackSlot } from "../components/AttackSlot";
-import { ProfSlot } from "../components/ProfSlot";
+import { ProficiencySlot } from "../components/ProficiencySlot";
 import { FeatSlot } from "../components/FeatSlot";
 
 import bgList from "../data/backgrounds-data.json";
@@ -41,18 +41,18 @@ export default function NewChar({ bench, addCharacterToBench }) {
   });
 
   const {
-    fields: profFields,
-    append: profAppend,
-    remove: profRemove,
+    fields: proficiencyFields,
+    append: proficiencyAppend,
+    remove: proficiencyRemove,
   } = useFieldArray({
     control,
-    name: "profSlotArray",
+    name: "proficiencySlotArray",
   });
 
   const {
-    fields: langFields,
-    append: langAppend,
-    remove: langRemove,
+    fields: languageFields,
+    append: languageAppend,
+    remove: languageRemove,
   } = useFieldArray({
     control,
     name: "languageSlotArray",
@@ -143,6 +143,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                       name="charname"
                       {...register("charname", { required: true })}
                       id="charname"
+                      maxlength="50"
                     />
                   </Stat>
 
@@ -169,6 +170,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                       {...register("level")}
                       id="level"
                       max="999"
+                      min="-999"
                       name="level"
                     />
                   </Stat>
@@ -230,26 +232,28 @@ export default function NewChar({ bench, addCharacterToBench }) {
                         />
                       </Stat>
                       <Stat>
-                        <LabelText htmlFor="strength-mod">Modifier</LabelText>
+                        <LabelText htmlFor="strengthMod">Modifier</LabelText>
                         <InputNumber
-                          {...register("strength-mod")}
-                          id="strength-mod"
+                          {...register("strengthMod")}
+                          id="strengthMod"
                           max="999"
-                          name="strength-mod"
+                          min="-999"
+                          name="strengthMod"
                         />
                       </Stat>
                     </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
-                        <LabelText htmlFor="strength-throw">
+                        <LabelText htmlFor="strengthThrow">
                           Saving Throw
                         </LabelText>
                         <InputNumber
-                          {...register("strength-throw")}
-                          id="strength-throw"
+                          {...register("strengthThrow")}
+                          id="strengthThrow"
                           max="999"
-                          name="strength-throw"
+                          min="-999"
+                          name="strengthThrow"
                         />
                       </Stat>
 
@@ -259,6 +263,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("athletics")}
                           id="athletics"
                           max="999"
+                          min="-999"
                           name="athletics"
                         />
                       </Stat>
@@ -273,28 +278,31 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("dexterity")}
                           id="dexterity"
                           max="999"
+                          min="-999"
                           name="dexterity"
                         />
                       </Stat>
                       <Stat>
-                        <LabelText htmlFor="dexterity-mod">Modifier</LabelText>
+                        <LabelText htmlFor="dexterityMod">Modifier</LabelText>
                         <InputNumber
-                          {...register("dexterity-mod")}
-                          id="dexterity-mod"
+                          {...register("dexterityMod")}
+                          id="dexterityMod"
                           max="999"
-                          name="dexterity-mod"
+                          min="-999"
+                          name="dexterityMod"
                         />
                       </Stat>
                     </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
-                        <LabelText htmlFor="dex-throw">Saving Throws</LabelText>
+                        <LabelText htmlFor="dexThrow">Saving Throws</LabelText>
                         <InputNumber
-                          {...register("dex-throws")}
-                          id="dex-throws"
+                          {...register("dexThrow")}
+                          id="dexThrow"
                           max="999"
-                          name="dex-throws"
+                          min="-999"
+                          name="dexThrow"
                         />
                       </Stat>
 
@@ -304,6 +312,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("acrobatics")}
                           id="acrobatics"
                           max="999"
+                          min="-999"
                           name="acrobatics"
                         />
                       </Stat>
@@ -314,6 +323,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("sleight")}
                           id="sleight"
                           max="999"
+                          min="-999"
                           name="sleight"
                         />
                       </Stat>
@@ -324,6 +334,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("stealth")}
                           id="stealth"
                           max="999"
+                          min="-999"
                           name="stealth"
                         />
                       </Stat>
@@ -340,31 +351,34 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("constitution")}
                           id="constitution"
                           max="999"
+                          min="-999"
                           name="constitution"
                         />
                       </Stat>
                       <Stat>
-                        <LabelText htmlFor="constitution-mod">
+                        <LabelText htmlFor="constitutionMod">
                           Modifier
                         </LabelText>
                         <InputNumber
-                          {...register("constitution-mod")}
-                          id="constitution-mod"
+                          {...register("constitutionMod")}
+                          id="constitutionMod"
                           max="999"
-                          name="constitution-mod"
+                          min="-999"
+                          name="constitutionMod"
                         />
                       </Stat>
                     </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
-                        <LabelText htmlFor="const-throw">
+                        <LabelText htmlFor="constThrow">
                           Saving Throws
                         </LabelText>
                         <InputNumber
-                          {...register("const-throw")}
-                          id="const-throw"
+                          {...register("constThrow")}
+                          id="constThrow"
                           max="999"
+                          min="-999"
                         />
                       </Stat>
                     </ThrowWrapper>
@@ -380,30 +394,33 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("intelligence")}
                           id="intelligence"
                           max="999"
+                          min="-999"
                           name="intelligence"
                         />
                       </Stat>
                       <Stat>
-                        <LabelText htmlFor="intelligence-mod">
+                        <LabelText htmlFor="intelligenceMod">
                           Modifier
                         </LabelText>
                         <InputNumber
-                          {...register("intelligence-mod")}
-                          id="intelligence-mod"
+                          {...register("intelligenceMod")}
+                          id="intelligenceMod"
                           max="999"
-                          name="intelligence-mod"
+                          min="-999"
+                          name="intelligenceMod"
                         />
                       </Stat>
                     </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
-                        <LabelText htmlFor="int-throw">Saving Throws</LabelText>
+                        <LabelText htmlFor="intThrow">Saving Throws</LabelText>
                         <InputNumber
-                          {...register("int-throw")}
-                          id="int-throw"
+                          {...register("intThrow")}
+                          id="intThrow"
                           max="999"
-                          name="int-throw"
+                          min="-999"
+                          name="intThrow"
                         />
                       </Stat>
 
@@ -413,6 +430,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("arcana")}
                           id="arcana"
                           max="999"
+                          min="-999"
                           name="arcana"
                         />
                       </Stat>
@@ -423,6 +441,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("history")}
                           id="history"
                           max="999"
+                          min="-999"
                           name="history"
                         />
                       </Stat>
@@ -433,6 +452,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("nature")}
                           id="nature"
                           max="999"
+                          min="-999"
                           name="nature"
                         />
                       </Stat>
@@ -445,6 +465,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("investigation")}
                           id="investigation"
                           max="999"
+                          min="-999"
                           name="investigation"
                         />
                       </Stat>
@@ -455,6 +476,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("religion")}
                           id="religion"
                           max="999"
+                          min="-999"
                           name="religion"
                         />
                       </Stat>
@@ -469,40 +491,43 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("wisdom")}
                           id="wisdom"
                           max="999"
+                          min="-999"
                           name="wisdom"
                         />
                       </Stat>
                       <Stat>
-                        <LabelText htmlFor="wisdom-mod">Modifier</LabelText>
+                        <LabelText htmlFor="wisdomMod">Modifier</LabelText>
                         <InputNumber
-                          {...register("wisdom-mod")}
-                          id="wisdom-mod"
+                          {...register("wisdomMod")}
+                          id="wisdomMod"
                           max="999"
-                          name="wisdom-mod"
+                          min="-999"
+                          name="wisdomMod"
                         />
                       </Stat>
                     </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
-                        <LabelText htmlFor="wis-throw">Saving Throws</LabelText>
+                        <LabelText htmlFor="wisThrow">Saving Throws</LabelText>
                         <InputNumber
-                          {...register("wis-throw")}
-                          id="wis-throw"
+                          {...register("wisThrow")}
+                          id="wisThrow"
                           max="999"
-                          name="wis-throw"
+                          min="-999"
+                          name="wisThrow"
                         />
                       </Stat>
 
                       <Stat>
-                        <LabelText htmlFor="animal-handling">
+                        <LabelText htmlFor="animalHandling">
                           Animal Handling
                         </LabelText>
                         <InputNumber
-                          {...register("animal-handling")}
-                          id="animal-handling"
+                          {...register("animalHandling")}
+                          id="animalHandling"
                           max="999"
-                          name="animal-handling"
+                          name="animalHandling"
                         />
                       </Stat>
 
@@ -512,6 +537,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("insight")}
                           id="insight"
                           max="999"
+                          min="-999"
                           name="insight"
                         />
                       </Stat>
@@ -522,6 +548,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("medicine")}
                           id="medicine"
                           max="999"
+                          min="-999"
                           name="medicine"
                         />
                       </Stat>
@@ -531,6 +558,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("perception")}
                           id="perception"
                           max="999"
+                          min="-999"
                           name="perception"
                         />
                       </Stat>
@@ -541,6 +569,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("survival")}
                           id="survival"
                           max="999"
+                          min="-999"
                           name="survival"
                         />
                       </Stat>
@@ -555,30 +584,30 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("charisma")}
                           id="charisma"
                           max="999"
+                          min="-999"
                           name="charisma"
                         />
                       </Stat>
                       <Stat>
-                        <LabelText htmlFor="charisma-mod">Modifier</LabelText>
+                        <LabelText htmlFor="charismaMod">Modifier</LabelText>
                         <InputNumber
-                          {...register("charisma-mod")}
-                          id="charisma-mod"
+                          {...register("charismaMod")}
+                          id="charismaMod"
                           max="999"
-                          name="charisma-mod"
+                          min="-999"
+                          name="charismaMod"
                         />
                       </Stat>
                     </MainStatWrapper>
 
                     <ThrowWrapper>
                       <Stat>
-                        <LabelText htmlFor="char-throw">
-                          Saving Throws
-                        </LabelText>
+                        <LabelText htmlFor="charThrow">Saving Throws</LabelText>
                         <InputNumber
-                          {...register("char-throw")}
-                          id="char-throw"
+                          {...register("charThrow")}
+                          id="charThrow"
                           max="999"
-                          name="char-throw"
+                          name="charThrow"
                         />
                       </Stat>
 
@@ -588,6 +617,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("deception")}
                           id="deception"
                           max="999"
+                          min="-999"
                           name="deception"
                         />
                       </Stat>
@@ -600,6 +630,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("intimidation")}
                           id="intimidation"
                           max="999"
+                          min="-999"
                           name="intimidation"
                         />
                       </Stat>
@@ -610,6 +641,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("performance")}
                           id="performance"
                           max="999"
+                          min="-999"
                           name="performance"
                         />
                       </Stat>
@@ -620,6 +652,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                           {...register("persuasion")}
                           id="persuasion"
                           max="999"
+                          min="-999"
                           name="persuasion"
                         />
                       </Stat>
@@ -628,35 +661,36 @@ export default function NewChar({ bench, addCharacterToBench }) {
                   <StatWrapper>
                     <MainStatWrapper>
                       <Stat>
-                        <LabelText htmlFor="proficiency-bonus">
+                        <LabelText htmlFor="proficiencyBonus">
                           Proficiency Bonus
                         </LabelText>
                         <InputNumber
-                          {...register("proficiency-bonus")}
-                          id="proficiency-bonus"
+                          {...register("proficiencyBonus")}
+                          id="proficiencyBonus"
                           max="999"
-                          name="proficiency-bonus"
+                          min="-999"
+                          name="proficiencyBonus"
                         />
                       </Stat>
-
                       <Stat>
                         <LabelText htmlFor="inspiration">Inspiration</LabelText>
-                        <InputNumber
+                        <input
+                          type="checkbox"
                           {...register("inspiration")}
                           id="inspiration"
-                          max="999"
                           name="inspiration"
                         />
                       </Stat>
                       <Stat>
-                        <LabelText htmlFor="passive-wisdom">
+                        <LabelText htmlFor="passiveWisdom">
                           Passive Wisdom
                         </LabelText>
                         <InputNumber
-                          {...register("passive-wisdom")}
-                          id="passive-wisdom"
+                          {...register("passiveWisdom")}
+                          id="passiveWisdom"
                           max="999"
-                          name="passive-wisdom"
+                          min="-999"
+                          name="passiveWisdom"
                         />
                       </Stat>
                     </MainStatWrapper>
@@ -669,12 +703,13 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 <VitallWrapper>
                   <Vitwrapper>
                     <Stat>
-                      <LabelText htmlFor="armor-class">Armor Class</LabelText>
+                      <LabelText htmlFor="armorClass">Armor Class</LabelText>
                       <InputNumber
-                        {...register("armor-class")}
-                        id="armor-class"
+                        {...register("armorClass")}
+                        id="armorClass"
                         max="999"
-                        name="armor-class"
+                        min="-999"
+                        name="armorClass"
                       />
                     </Stat>
 
@@ -684,6 +719,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
                         {...register("initiative")}
                         id="initiative"
                         max="999"
+                        min="-999"
+                        name="initiative"
                       />
                     </Stat>
 
@@ -694,6 +731,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                         id="speed"
                         max="999"
                         name="speed"
+                        min="-999"
                       />
                     </Stat>
                   </Vitwrapper>
@@ -709,33 +747,38 @@ export default function NewChar({ bench, addCharacterToBench }) {
                     </Stat>
 
                     <Stat>
-                      <LabelText htmlFor="temp-hp">Temp Hit Points</LabelText>
+                      <LabelText htmlFor="tempHp">Temp Hit Points</LabelText>
                       <InputNumber
-                        {...register("temp-hp")}
-                        id="temp-hp"
+                        {...register("tempHp")}
+                        id="tempHp"
                         max="999"
-                        name="temp-hp"
+                        name="tempHp"
+                        min="-999"
+                        placeholder="0"
                       />
                     </Stat>
                   </Vitwrapper>
                   <Vitwrapper>
                     <Stat>
-                      <LabelText htmlFor="hit-dice">Hit Dice</LabelText>
+                      <LabelText htmlFor="hitDice">Hit Dice</LabelText>
                       <InputNumber
-                        {...register("hit-dice")}
-                        id="hit-dice"
+                        {...register("hitDice")}
+                        id="hitDice"
                         max="999"
-                        name="hit-dice"
+                        min="-999"
+                        name="hitDice"
                       />
                     </Stat>
 
                     <Stat>
-                      <LabelText htmlFor="death-saves">Death Saves</LabelText>
+                      <LabelText htmlFor="deathSaves">Death Saves</LabelText>
                       <InputNumber
-                        {...register("death-saves")}
-                        id="death-saves"
-                        max="999"
-                        name="death-saves"
+                        {...register("deathSaves")}
+                        id="deathSaves"
+                        max="3"
+                        min="0"
+                        name="deathSaves"
+                        placeholder="3"
                       />
                     </Stat>
                   </Vitwrapper>
@@ -751,6 +794,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
                       {...register("personality")}
                       id="personality"
                       name="personality"
+                      maxlength="500"
+                      placeholder="(500 characters max)"
                     ></FlavorText>
                   </Stat>
 
@@ -760,6 +805,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
                       {...register("ideals")}
                       id="ideals"
                       name="ideals"
+                      maxlength="500"
+                      placeholder="(500 characters max)"
                     ></FlavorText>
                   </Stat>
 
@@ -769,6 +816,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
                       {...register("bonds")}
                       id="bonds"
                       name="bonds"
+                      maxlength="500"
+                      placeholder="(500 characters max)"
                     ></FlavorText>
                   </Stat>
 
@@ -778,6 +827,8 @@ export default function NewChar({ bench, addCharacterToBench }) {
                       {...register("flaws")}
                       id="flaws"
                       name="flaws"
+                      maxlength="500"
+                      placeholder="(500 characters max)"
                     ></FlavorText>
                   </Stat>
                 </FormWrapper>
@@ -821,7 +872,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
               </Collapsible>
             </StatField>
             <StatField>
-              <Collapsible trigger="Features, Traits &amp; Invocations">
+              <Collapsible trigger="Feats, Traits &amp; Invocations">
                 <FormWrapper>
                   {featFields.map((field, index) => (
                     <FeatSlot
@@ -844,35 +895,35 @@ export default function NewChar({ bench, addCharacterToBench }) {
             <StatField>
               <Collapsible trigger="Other Proficiencies &amp; Languages">
                 <FormWrapper>
-                  {profFields.map((field, index) => (
-                    <ProfSlot
+                  {proficiencyFields.map((field, index) => (
+                    <ProficiencySlot
                       register={register}
                       index={index}
-                      profRemove={profRemove}
+                      proficiencyRemove={proficiencyRemove}
                       key={field.id}
                     />
                   ))}
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => profAppend({ proficiency: "" })}
+                  onClick={() => proficiencyAppend({ proficiencies: "" })}
                 >
                   Add Proficiencies
                 </Button>
                 <FormWrapper>
-                  {langFields.map((field, index) => (
+                  {languageFields.map((field, index) => (
                     <LanguageSlot
                       register={register}
                       watch={watch}
                       index={index}
-                      langRemove={langRemove}
+                      languageRemove={languageRemove}
                       key={field.id}
                     />
                   ))}
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => langAppend({ selectedLanguage: "" })}
+                  onClick={() => languageAppend({ selectedLanguage: "" })}
                 >
                   Add Language
                 </Button>

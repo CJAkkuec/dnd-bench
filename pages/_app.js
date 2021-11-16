@@ -20,6 +20,9 @@ function MyApp({ Component, pageProps }) {
     });
   }
 
+  const getCurrentCharacter = () =>
+    bench.characters.find(({ id }) => id === bench.activeCharacterID);
+
   function removeCharacter(id) {
     const updatedBench = bench.characters.filter(
       (character) => character.id !== id
@@ -38,6 +41,7 @@ function MyApp({ Component, pageProps }) {
       addCharacterToBench={addCharacterToBench}
       setActiveCharacter={setActiveCharacter}
       removeCharacter={removeCharacter}
+      getCurrentCharacter={getCurrentCharacter}
     />
   );
 }

@@ -55,35 +55,10 @@
     "source": "ERLW",
     "page": 6,
     "type": "exotic",
-    "typicalSpeakers": [
-      "{@filter celestials|bestiary|source=ERLW|type=celestial}"
-    ],
+    "typicalSpeakers": ["Celestials", "Gods"],
     "script": "Celestial"
   },
-  {
-    "name": "Celestial",
-    "source": "GGR",
-    "page": 9,
-    "type": "standard",
-    "typicalSpeakers": ["{@filter angels|bestiary|source=GGR|tag=angel}"],
-    "script": "Celestial"
-  },
-  {
-    "name": "Celestial",
-    "source": "MOT",
-    "page": 9,
-    "typicalSpeakers": ["Gods"],
-    "script": "Celestial"
-  },
-  {
-    "name": "Celestial",
-    "source": "PHB",
-    "page": 123,
-    "srd": true,
-    "type": "exotic",
-    "typicalSpeakers": ["{@filter celestials|bestiary|type=celestial}"],
-    "script": "Celestial"
-  },
+
   {
     "name": "Chessentan",
     "source": "SCAG",
@@ -125,47 +100,20 @@
     "source": "ERLW",
     "page": 6,
     "type": "standard",
-    "typicalSpeakers": ["The Five Nations", "trade language of Khorvaire"],
-    "script": "Common"
-  },
-  {
-    "name": "Common",
-    "source": "GGR",
-    "page": 9,
-    "type": "standard",
     "typicalSpeakers": [
-      "{@filter humans|bestiary|type=humanoid|tag=any race;human|source=GGR}"
+      "Humanoids/Humans",
+      "The Five Nations",
+      "Trade language of Khorvaire"
     ],
     "script": "Common"
   },
-  {
-    "name": "Common",
-    "source": "MOT",
-    "page": 9,
-    "typicalSpeakers": ["Humans"],
-    "script": "Common"
-  },
-  {
-    "name": "Common",
-    "source": "PHB",
-    "page": 123,
-    "srd": true,
-    "type": "standard",
-    "typicalSpeakers": [
-      "{@filter humans|bestiary|type=humanoid|tag=any race;human}"
-    ],
-    "script": "Common",
-    "fonts": ["fonts/languages/PHB/Human/Harpers.ttf"]
-  },
+
   {
     "name": "Daelkyr",
     "source": "ERLW",
     "page": 6,
     "type": "exotic",
-    "typicalSpeakers": [
-      "{@filter aberrations|bestiary|type=aberration|source=ERLW}",
-      "denizens of Khyber"
-    ],
+    "typicalSpeakers": ["Aberrations", "Denizens of Khyber"],
     "script": "Daelkyr"
   },
   {
@@ -207,7 +155,7 @@
     "name": "Deep Crow",
     "source": "AI",
     "page": 210,
-    "typicalSpeakers": ["{@creature Deep Crow|AI|deep crows}"]
+    "typicalSpeakers": ["Deep Crow"]
   },
   {
     "name": "Deep Speech",
@@ -215,10 +163,7 @@
     "page": 123,
     "srd": true,
     "type": "exotic",
-    "typicalSpeakers": [
-      "{@creature mind flayer||mind flayers}",
-      "{@creature beholder||beholders}"
-    ],
+    "typicalSpeakers": ["Mind Flayers", "Beholders"],
     "script": "none"
   },
   {
@@ -226,80 +171,24 @@
     "source": "ERLW",
     "page": 6,
     "type": "exotic",
-    "typicalSpeakers": [
-      "{@filter dragons|bestiary|source=ERLW|type=dragon}",
-      "{@filter dragonborn|bestiary|type=humanoid|tag=any race;dragonborn|source=ERLW}"
-    ],
-    "script": "Draconic"
-  },
-  {
-    "name": "Draconic",
-    "source": "GGR",
-    "page": 9,
-    "type": "standard",
-    "typicalSpeakers": ["{@filter dragons|bestiary|source=GGR|type=dragon}"],
-    "script": "Draconic"
-  },
-  {
-    "name": "Draconic",
-    "source": "MOT",
-    "page": 9,
-    "typicalSpeakers": ["Dragons"],
-    "script": "Draconic"
-  },
-  {
-    "name": "Draconic",
-    "source": "PHB",
-    "page": 123,
-    "srd": true,
-    "additionalSources": [
-      {
-        "source": "PHB",
-        "page": 32
-      }
-    ],
-    "type": "exotic",
-    "typicalSpeakers": [
-      "{@filter dragons|bestiary|type=dragon}",
-      "{@race dragonborn}"
-    ],
-    "script": "Draconic",
+    "typicalSpeakers": ["Dragons", "Dragonborn"],
     "entries": [
       "Draconic is thought to be one of the oldest languages and is often used in the study of magic. The language sounds harsh to most other creatures and includes numerous hard consonants and sibilants."
     ],
-    "hasFluffImages": true
+    "script": "Draconic"
   },
-  {
-    "name": "Druidic",
-    "source": "GGR",
-    "page": 9,
-    "type": "secret",
-    "typicalSpeakers": [
-      "Selesnya {@class druid||druids}/{@creature druid||druids}",
-      "Golgari {@class druid||druids}/{@creature druid||druids}"
-    ]
-  },
+
   {
     "name": "Druidic",
     "source": "PHB",
     "page": 64,
     "srd": true,
     "type": "secret",
-    "typicalSpeakers": [
-      "{@class druid||druids}/{@creature druid||druids}",
-      "{@creature treant||treants}"
-    ],
+    "typicalSpeakers": ["Druids", "Treants"],
     "entries": [
-      "Druidic is the secret language of druids. It can be spoken or used to leave hidden messages. Creatures who know this language automatically spot such a message. Others spot the message's presence with a successful DC 15 Wisdom ({@skill Perception}) check but can't decipher it without magic."
-    ]
-  },
-  {
-    "name": "Dwarvish",
-    "source": "ERLW",
-    "page": 6,
-    "type": "standard",
-    "typicalSpeakers": ["Mror Holds"],
-    "script": "Dwarvish"
+      "Druidic is the secret language of druids. It can be spoken or used to leave hidden messages. Creatures who know this language automatically spot such a message. Others spot the message's presence with a successful DC 15 Wisdom (Perception) check but can't decipher it without magic."
+    ],
+    "script": "none"
   },
   {
     "name": "Dwarvish",
@@ -313,32 +202,12 @@
       }
     ],
     "type": "standard",
-    "typicalSpeakers": [
-      "{@filter dwarves|bestiary|type=humanoid|tag=any race;dwarf}"
-    ],
+    "typicalSpeakers": ["Dwarves"],
     "script": "Dwarvish",
     "entries": [
       "Dwarvish is full of hard consonants and guttural sounds, and those characteristics spill over into whatever other language a dwarf might speak."
     ],
     "hasFluffImages": true
-  },
-  {
-    "name": "Elvish",
-    "source": "ERLW",
-    "page": 6,
-    "type": "standard",
-    "typicalSpeakers": ["Aerenal", "Valenar"],
-    "script": "Elvish"
-  },
-  {
-    "name": "Elvish",
-    "source": "GGR",
-    "page": 9,
-    "type": "standard",
-    "typicalSpeakers": [
-      "{@filter elves|bestiary|type=humanoid|tag=any race;elf|source=GGR}"
-    ],
-    "script": "Elvish"
   },
   {
     "name": "Elvish",
@@ -352,9 +221,7 @@
       }
     ],
     "type": "standard",
-    "typicalSpeakers": [
-      "{@filter elves|bestiary|type=humanoid|tag=any race;elf}"
-    ],
+    "typicalSpeakers": ["Elves", "Aerenal", "Valenar"],
     "script": "Elvish",
     "entries": [
       "Elvish is fluid, with subtle intonations and intricate grammar. Elven literature is rich and varied, and their songs and poems are famous among other races. Many bards learn their language so they can add Elvish ballads to their repertoires."
@@ -366,57 +233,26 @@
     "source": "ERLW",
     "page": 6,
     "type": "standard",
-    "typicalSpeakers": ["Inhabitants of Xen'drik"],
+    "typicalSpeakers": ["Giants", "Inhabitants of Xen'drik"],
     "script": "Giant"
-  },
-  {
-    "name": "Giant",
-    "source": "GGR",
-    "page": 9,
-    "type": "standard",
-    "typicalSpeakers": [
-      "{@creature ogre||ogres}",
-      "{@filter giants|bestiary|type=giant|source=ERLW}"
-    ],
-    "script": "Minotaur"
-  },
-  {
-    "name": "Giant",
-    "source": "MOT",
-    "page": 9,
-    "typicalSpeakers": ["Cyclopes, giants"],
-    "script": "Minotaur"
-  },
-  {
-    "name": "Giant",
-    "source": "PHB",
-    "page": 123,
-    "srd": true,
-    "type": "standard",
-    "typicalSpeakers": [
-      "{@creature ogre||ogres}",
-      "{@filter giants|bestiary|type=giant}"
-    ],
-    "script": "Dwarvish",
-    "hasFluffImages": true
   },
   {
     "name": "Giant Eagle",
     "source": "MM",
     "page": 324,
-    "typicalSpeakers": ["{@creature Giant Eagle||giant eagles}"]
+    "typicalSpeakers": ["Giant Eagle"]
   },
   {
     "name": "Giant Elk",
     "source": "MM",
     "page": 325,
-    "typicalSpeakers": ["{@creature Giant Elk||giant elks}"]
+    "typicalSpeakers": ["Giant Elk"]
   },
   {
     "name": "Giant Owl",
     "source": "MM",
     "page": 327,
-    "typicalSpeakers": ["{@creature Giant Owl||giant owls}"]
+    "typicalSpeakers": ["Giant Owls"]
   },
   {
     "name": "Gith",
@@ -429,12 +265,7 @@
         "page": 90
       }
     ],
-    "typicalSpeakers": [
-      "{@creature Githzerai Monk||githzerai monks}",
-      "{@creature Githyanki Warrior||githyanki warriors}",
-      "{@creature Githzerai Zerth||githzerai zerths}",
-      "{@creature Githyanki Knight||githyanki knights}"
-    ],
+    "typicalSpeakers": ["Githzerai", "Githyanki"],
     "script": "Tir'su",
     "entries": [
       {
@@ -451,19 +282,7 @@
     "name": "Gnoll",
     "source": "MM",
     "page": 163,
-    "typicalSpeakers": [
-      "{@creature Gnoll||gnolls}",
-      "{@creature Gnoll Pack Lord||gnoll pack lords}",
-      "{@creature Gnoll Fang of Yeenoghu||gnoll fangs of yeenoghu}"
-    ]
-  },
-  {
-    "name": "Gnomish",
-    "source": "ERLW",
-    "page": 6,
-    "type": "standard",
-    "typicalSpeakers": ["Zilargo"],
-    "script": "Dwarvish"
+    "typicalSpeakers": ["Gnolls"]
   },
   {
     "name": "Gnomish",
@@ -477,28 +296,14 @@
       }
     ],
     "type": "standard",
-    "typicalSpeakers": [
-      "{@filter gnomes|bestiary|type=humanoid|tag=any race;gnome}"
-    ],
+    "typicalSpeakers": ["Gnomes", "Zilargo"],
     "script": "Dwarvish",
     "entries": [
       "The Gnomish language, which uses the Dwarvish script, is renowned for its technical treatises and its catalogs of knowledge about the natural world."
     ],
     "hasFluffImages": true
   },
-  {
-    "name": "Goblin",
-    "source": "ERLW",
-    "page": 6,
-    "type": "standard",
-    "typicalSpeakers": [
-      "Darguun",
-      "Droaam",
-      "Shadow Marches",
-      "monsters of Khorvaire"
-    ],
-    "script": "Goblin"
-  },
+
   {
     "name": "Goblin",
     "source": "GGR",
@@ -510,37 +315,30 @@
       }
     ],
     "type": "standard",
-    "typicalSpeakers": ["{@filter goblins|bestiary|tag=any race|source=GGR}"],
+    "typicalSpeakers": [
+      "Goblins",
+      "Darguun",
+      "Droaam",
+      "Shadow Marches",
+      "Monsters of Khorvaire"
+    ],
     "script": "Common",
     "entries": [
       "In Ravnica, Goblin is a simplistic language with a limited vocabulary and fluid rules of grammar, unsuited for any sophisticated conversation."
     ]
   },
-  {
-    "name": "Goblin",
-    "source": "PHB",
-    "page": 123,
-    "srd": true,
-    "type": "standard",
-    "typicalSpeakers": ["{@filter goblinoids|bestiary|tag=goblinoid}"],
-    "script": "Dwarvish",
-    "hasFluffImages": true
-  },
+
   {
     "name": "Grell",
     "source": "MM",
     "page": 172,
-    "typicalSpeakers": ["{@creature Grell||grells}"]
+    "typicalSpeakers": ["Grell"]
   },
   {
     "name": "Grung",
     "source": "VGM",
     "page": 156,
-    "typicalSpeakers": [
-      "{@creature Grung|VGM|grungs}",
-      "{@creature Grung Wildling|VGM|grung wildlings}",
-      "{@creature Grung Elite Warrior|VGM|grung elite warriors}"
-    ]
+    "typicalSpeakers": ["Grung"]
   },
   {
     "name": "Guran",
@@ -549,7 +347,7 @@
     "typicalSpeakers": ["Gur ethnic group"],
     "script": "Thorass",
     "entries": [
-      "A patois of {@language Roushoum|SCAG} and {@language Rashemi|SCAG}.",
+      "A patois of Roushoum and Rashemi.",
       {
         "type": "inset",
         "name": "Option: Human Languages",
@@ -560,14 +358,7 @@
       }
     ]
   },
-  {
-    "name": "Halfling",
-    "source": "ERLW",
-    "page": 6,
-    "type": "standard",
-    "typicalSpeakers": ["Talenta Plains"],
-    "script": "Common"
-  },
+
   {
     "name": "Halfling",
     "source": "PHB",
@@ -580,9 +371,7 @@
       }
     ],
     "type": "standard",
-    "typicalSpeakers": [
-      "{@filter halflings|bestiary|type=humanoid|tag=any race;halfling}"
-    ],
+    "typicalSpeakers": ["Halflings", "Talenta Plains"],
     "script": "Common",
     "entries": [
       "The Halfling language isn't secret, but halflings are loath to share it with others. They write very little, so they don't have a rich body of literature. Their oral tradition, however, is very strong. Almost all halflings speak Common to converse with the people in whose lands they dwell or through which they are traveling."
@@ -609,13 +398,13 @@
     "name": "Hook Horror",
     "source": "MM",
     "page": 189,
-    "typicalSpeakers": ["{@creature Hook Horror||hook horrors}"]
+    "typicalSpeakers": ["Hook Horror"]
   },
   {
     "name": "Ice Toad",
     "source": "RoT",
     "page": 90,
-    "typicalSpeakers": ["{@creature Ice Toad|RoT|ice toads}"]
+    "typicalSpeakers": ["Ice Toad"]
   },
   {
     "name": "Illuskan",
@@ -637,54 +426,32 @@
   },
   {
     "name": "Infernal",
-    "source": "ERLW",
-    "page": 6,
-    "type": "exotic",
-    "typicalSpeakers": ["{@filter fiends|bestiary|type=fiend|source=ERLW}"],
-    "script": "Infernal"
-  },
-  {
-    "name": "Infernal",
     "source": "PHB",
     "page": 123,
     "srd": true,
     "type": "exotic",
-    "typicalSpeakers": ["{@filter devils|bestiary|tag=devil}"],
+    "typicalSpeakers": ["Fiends"],
     "script": "Infernal"
   },
   {
     "name": "Ixitxachitl",
     "source": "OotA",
     "page": 225,
-    "typicalSpeakers": [
-      "{@creature Ixitxachitl|OotA|ixitxachitl}",
-      "{@creature Ixitxachitl Cleric|OotA|ixitxachitl clerics}",
-      "{@creature Vampiric Ixitxachitl|OotA|vampiric ixitxachitl}",
-      "{@creature Vampiric Ixitxachitl Cleric|OotA|vampiric ixitxachitl clerics}"
-    ]
+    "typicalSpeakers": ["Ixitxachitl"]
   },
   {
     "name": "Kraul",
     "source": "GGR",
     "page": 9,
     "type": "standard",
-    "typicalSpeakers": [
-      "kraul",
-      "{@creature Kraul Warrior|GGR|kraul warriors}",
-      "{@creature Kraul Death Priest|GGR|kraul death priests}",
-      "{@creature Devkarin Lich|GGR|devkarin liches}"
-    ],
+    "typicalSpeakers": ["Kraul"],
     "script": "Kraul"
   },
   {
     "name": "Kruthik",
     "source": "MTF",
     "page": 211,
-    "typicalSpeakers": [
-      "{@creature Young Kruthik|MTF|young kruthiks}",
-      "{@creature Adult Kruthik|MTF|adult kruthiks}",
-      "{@creature Kruthik Hive Lord|MTF|kruthik hive lords}"
-    ]
+    "typicalSpeakers": ["Kruthik"]
   },
   {
     "name": "Leonin",
@@ -707,7 +474,7 @@
     "source": "GGR",
     "page": 9,
     "type": "standard",
-    "typicalSpeakers": ["{@filter loxodons|bestiary|tag=any race|source=GGR}"],
+    "typicalSpeakers": ["Loxodons"],
     "script": "Elvish"
   },
   {
@@ -723,9 +490,7 @@
     "source": "GGR",
     "page": 9,
     "type": "standard",
-    "typicalSpeakers": [
-      "{@filter merfolk|bestiary|source=GGR|tag=any race;merfolk}"
-    ],
+    "typicalSpeakers": ["Merfolk"],
     "script": "Merfolk"
   },
   {
@@ -748,14 +513,6 @@
   },
   {
     "name": "Minotaur",
-    "source": "GGR",
-    "page": 9,
-    "type": "standard",
-    "typicalSpeakers": ["{@race minotaur|ggr|minotaurs}"],
-    "script": "Minotaur"
-  },
-  {
-    "name": "Minotaur",
     "source": "MOT",
     "page": 9,
     "typicalSpeakers": ["Minotaurs"],
@@ -766,11 +523,11 @@
     "source": "MM",
     "page": 224,
     "typicalSpeakers": [
-      "{@creature Monodrone||monodrones}",
-      "{@creature Duodrone||duodrones}",
-      "{@creature Tridrone||tridrones}",
-      "{@creature Quadrone||quadrones}",
-      "{@creature Pentadrone||pentadrones}"
+      "Monodrone",
+      "Duodrone",
+      "Tridrone",
+      "Quadrone",
+      "Pentradrone"
     ]
   },
   {
@@ -812,19 +569,11 @@
   },
   {
     "name": "Orc",
-    "source": "ERLW",
-    "page": 6,
-    "type": "exotic",
-    "typicalSpeakers": ["isolated orc tribes"],
-    "script": "Goblin"
-  },
-  {
-    "name": "Orc",
     "source": "PHB",
     "page": 123,
     "srd": true,
     "type": "standard",
-    "typicalSpeakers": ["{@filter orcs|bestiary|tag=orc}"],
+    "typicalSpeakers": ["Orcs"],
     "script": "Dwarvish",
     "entries": [
       " Orc is a harsh, grating language with hard consonants. It has no script of its own but is written in the Dwarvish script."
@@ -835,22 +584,7 @@
     "name": "Otyugh",
     "source": "MM",
     "page": 248,
-    "typicalSpeakers": ["{@creature Otyugh||otyughs}"]
-  },
-  {
-    "name": "Primordial",
-    "source": "ERLW",
-    "page": 6,
-    "type": "exotic",
-    "typicalSpeakers": ["{@filter elementals|bestiary|type=elemental}"],
-    "script": "Primordial"
-  },
-  {
-    "name": "Primordial",
-    "source": "MOT",
-    "page": 9,
-    "typicalSpeakers": ["Tritons"],
-    "script": "Common"
+    "typicalSpeakers": ["Otyugh"]
   },
   {
     "name": "Primordial",
@@ -865,7 +599,7 @@
       }
     ],
     "type": "exotic",
-    "typicalSpeakers": ["{@filter elementals|bestiary|type=elemental}"],
+    "typicalSpeakers": ["Elementals"],
     "script": "Dwarvish",
     "entries": [
       "Primordial is a guttural language, filled with harsh syllables and hard consonants."
@@ -876,11 +610,11 @@
     "name": "Qualith",
     "source": "VGM",
     "page": 75,
-    "typicalSpeakers": ["{@creature Mind Flayer||Mind Flayers}"],
+    "typicalSpeakers": ["Mind Flayers"],
     "script": "Qualith",
     "entries": [
       "The \"writing\" of mind flayers, known as Qualith, isn't as simple as a set of symbols representing sounds or ideas. An inscription in Qualith captures the thoughts of its creator and psionically transmits the thoughts to a mind flayer who later reads the inscription by touching it with its tentacles. Mind flayers write in Qualith by psionically imprinting their messages on nonmagical, nonliving material they grasp or caress with their tentacles. The imprinting causes imperceptible surface changes to the object, and abrasion or degradation of the material can cause the inscription to fade and fail.",
-      "An expression in Qualith is made up of four-line stanzas packed into interlocking blocks, creating complex patterns that are indecipherable by other creatures. Someone that touches a Qualith inscription, however, can receive fragmentary insight into the multilayered thoughts contained within it. A non-illithid that wants to understand a Qualith inscription can make an Intelligence check (DC based on the complexity of the contained thoughts) to try to derive some of the inscription's meaning. Multiple successful attempts might uncover different aspects about the illithid author, its intended meaning, and its intended audience. A failed attempt results in a crushing headache and, in extreme cases, madness. A {@spell comprehend languages} spell provides understanding of the inscription roughly equivalent to what a mind flayer would get from it."
+      "An expression in Qualith is made up of four-line stanzas packed into interlocking blocks, creating complex patterns that are indecipherable by other creatures. Someone that touches a Qualith inscription, however, can receive fragmentary insight into the multilayered thoughts contained within it. A non-illithid that wants to understand a Qualith inscription can make an Intelligence check (DC based on the complexity of the contained thoughts) to try to derive some of the inscription's meaning. Multiple successful attempts might uncover different aspects about the illithid author, its intended meaning, and its intended audience. A failed attempt results in a crushing headache and, in extreme cases, madness. A spell (comprehend languages) provides understanding of the inscription roughly equivalent to what a mind flayer would get from it."
     ]
   },
   {
@@ -888,11 +622,7 @@
     "source": "ERLW",
     "page": 6,
     "type": "exotic",
-    "typicalSpeakers": [
-      "{@creature Inspired|ERLW|inspired}",
-      "kalashtar",
-      "{@filter quori|bestiary|source=ERLW|search=quori}"
-    ],
+    "typicalSpeakers": ["Inspired}", "Kalashtar", "Quori}"],
     "script": "Quori"
   },
   {
@@ -918,7 +648,7 @@
     "source": "ERLW",
     "page": 6,
     "type": "standard",
-    "typicalSpeakers": ["people of Sarlona"],
+    "typicalSpeakers": ["People of Sarlona"],
     "script": "Common"
   },
   {
@@ -943,11 +673,7 @@
     "name": "Sahuagin",
     "source": "MM",
     "page": 263,
-    "typicalSpeakers": [
-      "{@creature Sahuagin||sahuagin}",
-      "{@creature Sahuagin Priestess||sahuagin priestesses}",
-      "{@creature Sahuagin Baron||sahuagin barons}"
-    ]
+    "typicalSpeakers": ["Sahuagin"]
   },
   {
     "name": "Shaaran",
@@ -988,47 +714,13 @@
     "name": "Slaad",
     "source": "MM",
     "page": 276,
-    "typicalSpeakers": [
-      "{@creature Slaad Tadpole||slaad tadpoles}",
-      "{@creature Red Slaad||red slaads}",
-      "{@creature Blue Slaad||blue slaads}",
-      "{@creature Green Slaad||green slaads}",
-      "{@creature Gray Slaad||gray slaads}",
-      "{@creature Death Slaad||death slaads}"
-    ]
-  },
-  {
-    "name": "Sphinx",
-    "source": "GGR",
-    "page": 9,
-    "type": "standard",
-    "typicalSpeakers": ["{@creature Sphinx of Judgment|ggr|sphinxes}"],
-    "script": "none"
+    "typicalSpeakers": ["Slaads (all)"]
   },
   {
     "name": "Sphinx",
     "source": "MM",
     "page": 281,
-    "typicalSpeakers": [
-      "{@creature Gynosphinx||gynosphinxes}",
-      "{@creature Androsphinx||androsphinxes}"
-    ]
-  },
-  {
-    "name": "Sphinx",
-    "source": "MOT",
-    "page": 9,
-    "typicalSpeakers": ["Sphinxes"]
-  },
-  {
-    "name": "Sylvan",
-    "source": "ERLW",
-    "page": 6,
-    "type": "exotic",
-    "typicalSpeakers": [
-      "{@filter fey creatures|bestiary|type=fey|source=ERLW}"
-    ],
-    "script": "Elvish"
+    "typicalSpeakers": ["Gynosphinx", "Androsphinx"]
   },
   {
     "name": "Sylvan",
@@ -1041,34 +733,13 @@
       }
     ],
     "type": "standard",
-    "typicalSpeakers": [
-      "{@race centaur|ggr|centaurs}",
-      "{@creature Conclave Dryad|ggr|dryads}"
-    ],
+    "typicalSpeakers": ["Fey"],
     "script": "Elvish",
     "entries": [
       "Sylvan is widely spoken in the Selesnya Conclave, for it is rich in vocabulary to describe natural phenomena and spiritual forces."
     ]
   },
-  {
-    "name": "Sylvan",
-    "source": "MOT",
-    "page": 9,
-    "typicalSpeakers": [
-      "Centaurs, {@filter satyrs|bestiary|source=MOT|search=satyr}"
-    ],
-    "script": "Elvish"
-  },
-  {
-    "name": "Sylvan",
-    "source": "PHB",
-    "page": 123,
-    "srd": true,
-    "type": "exotic",
-    "typicalSpeakers": ["{@filter fey creatures|bestiary|type=fey}"],
-    "script": "Elvish",
-    "hasFluffImages": true
-  },
+
   {
     "name": "Thayan",
     "source": "SCAG",
@@ -1087,27 +758,14 @@
     ],
     "hasFluffImages": true
   },
-  {
-    "name": "Thieves' Cant",
-    "source": "GGR",
-    "page": 9,
-    "type": "secret",
-    "typicalSpeakers": [
-      "street gangs",
-      "Dimir {@class rogue||rogues}",
-      "Golgari {@class rogue||rogues}"
-    ]
-  },
+
   {
     "name": "Thieves' Cant",
     "source": "PHB",
     "page": 94,
     "srd": true,
     "type": "secret",
-    "typicalSpeakers": [
-      "{@creature assassin||assassins}",
-      "{@class rogue||rogues}"
-    ],
+    "typicalSpeakers": ["Assassins", "Thieves"],
     "entries": [
       "Thieves' cant is a secret mix of dialect, jargon, and code that allows messages to be hidden in seemingly normal conversation. Only a creature that knows thieves' cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly."
     ]
@@ -1116,19 +774,19 @@
     "name": "Thri-kreen",
     "source": "MM",
     "page": 288,
-    "typicalSpeakers": ["{@creature Thri-kreen||thri-kreen}"]
+    "typicalSpeakers": ["Thri-kreen"]
   },
   {
     "name": "Tlincalli",
     "source": "VGM",
     "page": 193,
-    "typicalSpeakers": ["{@creature Tlincalli|VGM|tlincalli}"]
+    "typicalSpeakers": ["Tlincalli"]
   },
   {
     "name": "Troglodyte",
     "source": "MM",
     "page": 290,
-    "typicalSpeakers": ["{@creature Troglodyte||troglodytes}"]
+    "typicalSpeakers": ["Troglodyte"]
   },
   {
     "name": "Tuigan",
@@ -1188,7 +846,7 @@
     "name": "Umber Hulk",
     "source": "MM",
     "page": 292,
-    "typicalSpeakers": ["{@creature Umber Hulk||umber hulks}"]
+    "typicalSpeakers": ["Hulks"]
   },
   {
     "name": "Undercommon",
@@ -1196,7 +854,7 @@
     "page": 123,
     "srd": true,
     "type": "exotic",
-    "typicalSpeakers": ["underdark traders"],
+    "typicalSpeakers": ["Underdark traders"],
     "script": "Elvish",
     "hasFluffImages": true
   },
@@ -1229,7 +887,7 @@
       }
     ],
     "type": "standard",
-    "typicalSpeakers": ["{@race Vedalken|ggr}"],
+    "typicalSpeakers": ["Vedalken"],
     "script": "Vedalken",
     "entries": [
       "The Vedalken language is renowned for its technical treatises and its catalogs of knowledge about the natural world and the aether that pervades it."
@@ -1239,10 +897,7 @@
     "name": "Vegepygmy",
     "source": "VGM",
     "page": 196,
-    "typicalSpeakers": [
-      "{@creature Vegepygmy|VGM|vegepygmies}",
-      "{@creature Vegepygmy Chief|VGM|vegepygmy chiefs}"
-    ]
+    "typicalSpeakers": ["Vegepygmy"]
   },
   {
     "name": "Waelan",
@@ -1266,31 +921,25 @@
     "name": "Winter Wolf",
     "source": "MM",
     "page": 340,
-    "typicalSpeakers": ["{@creature Winter Wolf||winter wolves}"]
+    "typicalSpeakers": ["Winter Wolf"]
   },
   {
     "name": "Worg",
     "source": "MM",
     "page": 341,
-    "typicalSpeakers": ["{@creature Worg||worgs}"]
+    "typicalSpeakers": ["Worgs}"]
   },
   {
     "name": "Yeti",
     "source": "MM",
     "page": 305,
-    "typicalSpeakers": [
-      "{@creature Yeti||yetis}",
-      "{@creature Abominable Yeti||abominable yetis}"
-    ]
+    "typicalSpeakers": ["Yetis"]
   },
   {
     "name": "Yikaria",
     "source": "SKT",
     "page": 244,
-    "typicalSpeakers": [
-      "{@creature Yakfolk Priest|SKT|yakfolk priests}",
-      "{@creature Yakfolk Warrior|SKT|yakfolk warriors}"
-    ]
+    "typicalSpeakers": ["Yakfolk"]
   },
   {
     "name": "Zemnian",

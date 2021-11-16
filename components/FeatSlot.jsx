@@ -5,7 +5,6 @@ import slugify from "slugify";
 export const FeatSlot = ({ register, index, watch, featRemove }) => {
   const value = watch(`featSlotArray.${index}.selectedFeat`);
   const selectedFeat = featList.find((feat) => slugify(feat.name) === value);
-  console.log(selectedFeat);
 
   return (
     <>

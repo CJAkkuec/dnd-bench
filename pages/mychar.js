@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Footer } from "/components/Footer";
 
-export default function MyChar({ bench }) {
-  const currentCharacter = bench.characters.find(
-    (character) => character.id === bench.activeCharacterID
-  );
+export default function MyChar({ bench, getCurrentCharacter }) {
+  const currentCharacter = getCurrentCharacter();
+  /*Include Edit function 
+  Send info to form*/
 
   return (
     <>
@@ -17,219 +17,362 @@ export default function MyChar({ bench }) {
               <CharacterName>{currentCharacter.charname}</CharacterName>
               <BaseInfoWrapper>
                 <p>{currentCharacter.classtype}</p>
-                <p> Level {currentCharacter.level}</p>
+                <p>Level {currentCharacter.level}</p>
                 <p>{currentCharacter.bg}</p>
               </BaseInfoWrapper>
               <BaseInfoWrapper>
                 <p>{currentCharacter.race}</p>
                 <p>{currentCharacter.align}</p>
               </BaseInfoWrapper>
+
               <FieldWrapper>
                 <MainStatWrapper>
-                  <SpecialWrapper>
+                  <StatFieldWrapper>
+                    <StatWrapper>
+                      <SingleStatWrapper>
+                        <StyledStat>Strength</StyledStat>
+                        <StyledNumber>{currentCharacter.strength}</StyledNumber>
+                      </SingleStatWrapper>
+                      <SingleModWrapper>
+                        <StyledStat>Modifier</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.strengthMod}
+                        </StyledNumber>
+                      </SingleModWrapper>
+                    </StatWrapper>
+                    <ThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Saving Throw</p>
+                        <p>{currentCharacter.strengthThrow}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Athletics</p>
+                        <p>{currentCharacter.athletics}</p>
+                      </SingleThrowWrapper>
+                    </ThrowWrapper>
+                  </StatFieldWrapper>
+
+                  <StatFieldWrapper>
+                    <StatWrapper>
+                      <SingleStatWrapper>
+                        <StyledStat>Dexterity</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.dexterity}
+                        </StyledNumber>
+                      </SingleStatWrapper>
+                      <SingleModWrapper>
+                        <StyledStat>Modifier</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.dexterityMod}
+                        </StyledNumber>
+                      </SingleModWrapper>
+                    </StatWrapper>
+                    <ThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Saving Throw</p>
+                        <p>{currentCharacter.dexThrow}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Athletics</p>
+                        <p>{currentCharacter.acrobatics}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Sleight of Hand</p>
+                        <p>{currentCharacter.sleight}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Stealth</p>
+                        <p>{currentCharacter.stealth}</p>
+                      </SingleThrowWrapper>
+                    </ThrowWrapper>
+                  </StatFieldWrapper>
+
+                  <StatFieldWrapper>
+                    <StatWrapper>
+                      <SingleStatWrapper>
+                        <StyledStat>Constitution</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.constitution}
+                        </StyledNumber>
+                      </SingleStatWrapper>
+                      <SingleModWrapper>
+                        <StyledStat>Modifier</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.constitutionMod}
+                        </StyledNumber>
+                      </SingleModWrapper>
+                    </StatWrapper>
+                    <ThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Saving Throw</p>
+                        <p>{currentCharacter.constThrow}</p>
+                      </SingleThrowWrapper>
+                    </ThrowWrapper>
+                  </StatFieldWrapper>
+
+                  <StatFieldWrapper>
+                    <StatWrapper>
+                      <SingleStatWrapper>
+                        <StyledStat>Intelligence</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.intelligence}
+                        </StyledNumber>
+                      </SingleStatWrapper>
+                      <SingleModWrapper>
+                        <StyledStat>Modifier</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.intelligenceMod}
+                        </StyledNumber>
+                      </SingleModWrapper>
+                    </StatWrapper>
+                    <ThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Saving Throw</p>
+                        <p>{currentCharacter.constThrow}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Arcana</p>
+                        <p>{currentCharacter.arcana}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>History</p>
+                        <p>{currentCharacter.history}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Investigation</p>
+                        <p>{currentCharacter.investigation}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Nature</p>
+                        <p>{currentCharacter.nature}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Religion</p>
+                        <p>{currentCharacter.religion}</p>
+                      </SingleThrowWrapper>
+                    </ThrowWrapper>
+                  </StatFieldWrapper>
+
+                  <StatFieldWrapper>
+                    <StatWrapper>
+                      <SingleStatWrapper>
+                        <StyledStat>Wisdom</StyledStat>
+                        <StyledNumber>{currentCharacter.wisdom}</StyledNumber>
+                      </SingleStatWrapper>
+                      <SingleModWrapper>
+                        <StyledStat>Modifier</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.wisdomMod}
+                        </StyledNumber>
+                      </SingleModWrapper>
+                    </StatWrapper>
+                    <ThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Saving Throw</p>
+                        <p>{currentCharacter.wisThrow}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Animal Handling</p>
+                        <p>{currentCharacter.animalHandling}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Insight</p>
+                        <p>{currentCharacter.insight}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Medicine</p>
+                        <p>{currentCharacter.medicine}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Perception</p>
+                        <p>{currentCharacter.perception}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Survival</p>
+                        <p>{currentCharacter.survival}</p>
+                      </SingleThrowWrapper>
+                    </ThrowWrapper>
+                  </StatFieldWrapper>
+
+                  <StatFieldWrapper>
+                    <StatWrapper>
+                      <SingleStatWrapper>
+                        <StyledStat>Charisma</StyledStat>
+                        <StyledNumber>{currentCharacter.charisma}</StyledNumber>
+                      </SingleStatWrapper>
+                      <SingleModWrapper>
+                        <StyledStat>Modifier</StyledStat>
+                        <StyledNumber>
+                          {currentCharacter.charismaMod}
+                        </StyledNumber>
+                      </SingleModWrapper>
+                    </StatWrapper>
+                    <ThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Saving Throw</p>
+                        <p>{currentCharacter.charThrow}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Deception</p>
+                        <p>{currentCharacter.deception}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Intimidation</p>
+                        <p>{currentCharacter.intimidation}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Performance</p>
+                        <p>{currentCharacter.performance}</p>
+                      </SingleThrowWrapper>
+                      <SingleThrowWrapper>
+                        <p>Persuasion</p>
+                        <p>{currentCharacter.persuasion}</p>
+                      </SingleThrowWrapper>
+                    </ThrowWrapper>
+                  </StatFieldWrapper>
+                </MainStatWrapper>
+              </FieldWrapper>
+
+              <FieldWrapper>
+                <SecondaryStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
                       <StyledStat>Prof. Bonus</StyledStat>
                       <StyledNumber>
-                        {currentCharacter["proficiency-bonus"]}
+                        {currentCharacter.proficiencyBonus}
                       </StyledNumber>
                     </SingleStatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
                       <StyledStat>Inspiration</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter["inspiration"]}
-                      </StyledNumber>
+                      <StyledInsp>
+                        {currentCharacter.inspiration === true ? "✔️" : ""}
+                      </StyledInsp>
                     </SingleStatWrapper>
-                  </SpecialWrapper>
-                  <StatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
-                      <StyledStat>Strength</StyledStat>
-                      <StyledNumber>{currentCharacter.strength}</StyledNumber>
+                      <StyledStat>Armor Class</StyledStat>
+                      <StyledNumber>{currentCharacter.armorClass}</StyledNumber>
                     </SingleStatWrapper>
-                    <SingleModWrapper>
-                      <StyledStat>Modifier</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter["strength-mod"]}
-                      </StyledNumber>
-                    </SingleModWrapper>
-                  </StatWrapper>
-                  <StatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
-                      <StyledStat>Dexterity</StyledStat>
-                      <StyledNumber>{currentCharacter.dexterity}</StyledNumber>
+                      <StyledStat>Initiative</StyledStat>
+                      <StyledNumber>{currentCharacter.initiative}</StyledNumber>
                     </SingleStatWrapper>
-                    <SingleModWrapper>
-                      <StyledStat>Modifier</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter["dexterity-mod"]}
-                      </StyledNumber>
-                    </SingleModWrapper>
-                  </StatWrapper>
-                  <StatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
-                      <StyledStat>Constitution</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter.constitution}
-                      </StyledNumber>
+                      <StyledStat>Speed</StyledStat>
+                      <StyledNumber>{currentCharacter.speed}</StyledNumber>
                     </SingleStatWrapper>
-                    <SingleModWrapper>
-                      <StyledStat>Modifier</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter["constitution-mod"]}
-                      </StyledNumber>
-                    </SingleModWrapper>
-                  </StatWrapper>
-                  <StatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
-                      <StyledStat>Intelligence</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter.intelligence}
-                      </StyledNumber>
+                      <StyledStat>HP</StyledStat>
+                      <StyledNumber>{currentCharacter.hp}</StyledNumber>
                     </SingleStatWrapper>
-                    <SingleModWrapper>
-                      <StyledStat>Modifier</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter["intelligence-mod"]}
-                      </StyledNumber>
-                    </SingleModWrapper>
-                  </StatWrapper>
-                  <StatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
-                      <StyledStat>Wisdom</StyledStat>
-                      <StyledNumber>{currentCharacter.wisdom}</StyledNumber>
+                      <StyledStat>Temp HP</StyledStat>
+                      <StyledNumber>{currentCharacter.tempHp}</StyledNumber>
                     </SingleStatWrapper>
-                    <SingleModWrapper>
-                      <StyledStat>Modifier</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter["wisdom-mod"]}
-                      </StyledNumber>
-                    </SingleModWrapper>
-                  </StatWrapper>
-                  <StatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
                     <SingleStatWrapper>
-                      <StyledStat>Charisma</StyledStat>
-                      <StyledNumber>{currentCharacter.charisma}</StyledNumber>
+                      <StyledStat>Hit Dice</StyledStat>
+                      <StyledNumber>{currentCharacter.hitDice}</StyledNumber>
                     </SingleStatWrapper>
-                    <SingleModWrapper>
-                      <StyledStat>Modifier</StyledStat>
-                      <StyledNumber>
-                        {currentCharacter["charisma-mod"]}
-                      </StyledNumber>
-                    </SingleModWrapper>
-                  </StatWrapper>
-                </MainStatWrapper>
-                <SecondaryStatWrapper>
-                  <TertiaryStatWrapper>
-                    <StatWrapper>
-                      <SingleStatWrapper>
-                        <StyledStat>Armor Class</StyledStat>
-                        <StyledNumber>
-                          {currentCharacter["armor-class"]}
-                        </StyledNumber>
-                      </SingleStatWrapper>
-                    </StatWrapper>
-                    <StatWrapper>
-                      <SingleStatWrapper>
-                        <StyledStat>Initiative</StyledStat>
-                        <StyledNumber>
-                          {currentCharacter.initiative}
-                        </StyledNumber>
-                      </SingleStatWrapper>
-                    </StatWrapper>
-                    <StatWrapper>
-                      <SingleStatWrapper>
-                        <StyledStat>Speed</StyledStat>
-                        <StyledNumber>{currentCharacter.speed}</StyledNumber>
-                      </SingleStatWrapper>
-                    </StatWrapper>
-                  </TertiaryStatWrapper>
-                  <TertiaryStatWrapper>
-                    <StatWrapper>
-                      <SingleStatWrapper>
-                        <StyledStat>HP</StyledStat>
-                        <StyledNumber>{currentCharacter.hp}</StyledNumber>
-                      </SingleStatWrapper>
-                    </StatWrapper>
-                    <StatWrapper>
-                      <SingleStatWrapper>
-                        <StyledStat>Temp HP</StyledStat>
-                        <StyledNumber>
-                          {currentCharacter["temp-hp"]}
-                        </StyledNumber>
-                      </SingleStatWrapper>
-                    </StatWrapper>
-                    <StatWrapper></StatWrapper>
-                  </TertiaryStatWrapper>
-                  <TertiaryStatWrapper>
-                    <StatWrapper>
-                      <SingleStatWrapper>
-                        <StyledStat>Hit Dice</StyledStat>
-                        <StyledNumber>
-                          {currentCharacter["hit-dice"]}
-                        </StyledNumber>
-                      </SingleStatWrapper>
-                    </StatWrapper>
-                    <StatWrapper>
-                      <SingleStatWrapper>
-                        <StyledStat>Death Saves</StyledStat>
-                        <StyledNumber>
-                          {currentCharacter["death-saves"]}
-                        </StyledNumber>
-                      </SingleStatWrapper>
-                    </StatWrapper>
-                    <StatWrapper></StatWrapper>
-                  </TertiaryStatWrapper>
-                  <TertiaryStatWrapper>
-                    <ConditionalWrapper>
-                      <p>Spells</p>
-                      {currentCharacter.spellSlotArray.map((spellSlot) => {
-                        return <div>{spellSlot.selectedSpell}</div>;
-                      })}
-                    </ConditionalWrapper>
-                  </TertiaryStatWrapper>
-                  <TertiaryStatWrapper>
-                    <ConditionalWrapper>
-                      <p>Feats/etc</p>
-                      {currentCharacter.featSlotArray.map((featSlot) => {
-                        return <div>{featSlot.selectedFeat}</div>;
-                      })}
-                    </ConditionalWrapper>
-                  </TertiaryStatWrapper>
+                  </DiverseStatWrapper>
+                  <DiverseStatWrapper>
+                    <SingleStatWrapper>
+                      <StyledStat>Death Saves</StyledStat>
+                      <StyledNumber>{currentCharacter.deathSaves}</StyledNumber>
+                    </SingleStatWrapper>
+                  </DiverseStatWrapper>
                 </SecondaryStatWrapper>
               </FieldWrapper>
-              <FieldWrapper>
-                <ProfStatWrapper>
-                  <ConditionalWrapper>
-                    <p>Proficiencies</p>
-                    {currentCharacter.profSlotArray.map((profSlot) => {
-                      return <div>{profSlot.proficiency}</div>;
-                    })}
-                  </ConditionalWrapper>
-                  <ConditionalWrapper>
-                    <p>Languages</p>
-                    {currentCharacter.languageSlotArray.map((languageSlot) => {
-                      return <div>{languageSlot.selectedLanguage}</div>;
-                    })}
-                  </ConditionalWrapper>
-                </ProfStatWrapper>
-              </FieldWrapper>
+
               <FieldWrapper>
                 <ConditionalWrapper>
-                  <div>
-                    <p>Personality</p>
-                    <p>{currentCharacter.personality}</p>
-                  </div>
-                  <div>
-                    <p>Ideals</p>
-                    <p>{currentCharacter.ideals}</p>
-                  </div>
-                  <div>
-                    <p>Bonds</p>
-                    <p>{currentCharacter.bonds}</p>
-                  </div>
-                  <div>
-                    <p>Flaws</p>
-                    <p>{currentCharacter.flaws}</p>
-                  </div>
+                  <p>Spells</p>
+                  {currentCharacter.spellSlotArray.map((spellSlot) => {
+                    return <div>{spellSlot.selectedSpell}</div>;
+                  })}
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Attacks</p>
+                  {currentCharacter.attackSlotArray.map((attackSlot) => {
+                    return (
+                      <>
+                        <div>Name: {attackSlot.attackName}</div>
+                        <div>Dice: {attackSlot.attackDice}</div>
+                        <div>Range: {attackSlot.attackRange}</div>
+                      </>
+                    );
+                  })}
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Feats/etc</p>
+                  {currentCharacter.featSlotArray.map((featSlot) => {
+                    return <div>{featSlot.selectedFeat}</div>;
+                  })}
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Proficiencies</p>
+                  {currentCharacter.proficiencySlotArray.map(
+                    (proficiencySlot) => {
+                      return <div>{proficiencySlot.proficiencies}</div>;
+                    }
+                  )}
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Languages</p>
+                  {currentCharacter.languageSlotArray.map((languageSlot) => {
+                    return <div>{languageSlot.selectedLanguage}</div>;
+                  })}
+                </ConditionalWrapper>
+              </FieldWrapper>
+
+              <FieldWrapper>
+                <ConditionalWrapper>
+                  <p>Basic Items</p>
+                  {currentCharacter.basicItemSlotArray.map((itemSlot) => {
+                    return (
+                      <div>
+                        <p>{itemSlot.selectedItem}</p>
+                        <p>x{itemSlot.selectedItemAmount}</p>
+                      </div>
+                    );
+                  })}
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Character Notes</p>
+                  {currentCharacter.notesArray.map((noteSlot) => {
+                    return <div>{noteSlot.addedNote}</div>;
+                  })}
+                </ConditionalWrapper>
+              </FieldWrapper>
+
+              <FieldWrapper>
+                <ConditionalWrapper>
+                  <p>Personality</p>
+                  <div>{currentCharacter.personality}</div>
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Ideals</p>
+                  <div>{currentCharacter.ideals}</div>
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Bonds</p>
+                  <div>{currentCharacter.bonds}</div>
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Flaws</p>
+                  <div>{currentCharacter.flaws}</div>
                 </ConditionalWrapper>
               </FieldWrapper>
             </>
@@ -258,43 +401,44 @@ const MainWrapper = styled.div`
 `;
 
 const MainStatWrapper = styled.div`
-  width: 35vw;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.3rem;
 `;
 
 const StatWrapper = styled.div`
   display: flex;
-  font-size: 0.7rem;
-`;
-
-const SingleStatWrapper = styled.div`
-  width: 4rem;
-  height: 3rem;
-  display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  padding: 0.3rem;
+  font-size: 0.7rem;
+  gap: 0.3rem;
   background: lightgrey;
 `;
 
-const SingleModWrapper = styled.div`
-  width: 4rem;
-  height: 3rem;
+const SingleStatWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid lightgrey;
+  & > p:nth-child(2) {
+    background: white;
+  }
+`;
+
+const SingleModWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & > p:nth-child(2) {
+    background: white;
+  }
 `;
 
 const StyledStat = styled.p`
   margin: 0 auto 0.1rem auto;
-`;
-
-const SpecialWrapper = styled.div`
-  width: 35vw;
-  display: flex;
-  font-size: 0.7rem;
 `;
 
 const BaseInfoWrapper = styled.div`
@@ -319,34 +463,31 @@ const CharacterName = styled.div`
 
 const FieldWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 1rem;
+  gap: 0.3rem;
 `;
 
 const SecondaryStatWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-`;
-
-const TertiaryStatWrapper = styled.div`
-  display: flex;
+  flex-wrap: wrap;
   gap: 0.2rem;
 `;
 
 const ConditionalWrapper = styled.div`
-  width: 100%;
+  width: 48%;
   font-size: 0.8rem;
   display: flex;
   flex-direction: column;
   & > p {
     background: lightgrey;
+    margin: 0 0 0.3rem 0;
   }
-`;
 
-const ProfStatWrapper = styled.div`
-  display: flex;
-  gap: 0.5rem;
+  & div > p {
+    margin: 0;
+  }
 `;
 
 const StyledNumber = styled.p`
@@ -358,4 +499,54 @@ const StyledNumber = styled.p`
   margin: auto;
   text-align: center;
   margin: 0 auto 0 auto;
+`;
+
+const StyledInsp = styled.p`
+  background: white;
+  font-family: serif;
+  font-size: 0.7rem;
+  width: 50%;
+  color: black;
+  margin: auto;
+  text-align: center;
+  margin: 0 auto 0 auto;
+`;
+
+const ThrowWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+
+  & > div:nth-child(even) {
+    background: lightgrey;
+  }
+`;
+
+const SingleThrowWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  & > p {
+    margin: 0;
+  }
+`;
+
+const StatFieldWrapper = styled.div`
+  width: 31%;
+  border: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  padding: 0.3rem;
+`;
+
+const DiverseStatWrapper = styled.div`
+  width: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.3rem;
+  font-size: 0.7rem;
+  gap: 0.3rem;
+  background: lightgrey;
 `;
