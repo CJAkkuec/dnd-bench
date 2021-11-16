@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import slugify from "slugify";
 
-export const ProfSlot = ({ register, index, profRemove }) => {
+export const ProficiencySlot = ({ register, index, proficiencyRemove }) => {
   return (
     <StatWrapper>
       <Stat>
-        <LabelText htmlFor={`profSlotArray.${index}.proficiency`}>
-          Note {`${index + 1}`}
+        <LabelText htmlFor={`proficiencySlotArray.${index}.proficiencies`}>
+          Proficiency {`${index + 1}`}
         </LabelText>
         <ProfInput
-          {...register(`profSlotArray.${index}.proficiency`)}
+          {...register(`proficiencySlotArray.${index}.proficiencies`)}
           placeholder="Add proficiencies, separated by commas"
         ></ProfInput>
-        <Button type="button" onClick={() => profRemove(index)}>
+        <Button type="button" onClick={() => proficiencyRemove(index)}>
           Delete
         </Button>
       </Stat>

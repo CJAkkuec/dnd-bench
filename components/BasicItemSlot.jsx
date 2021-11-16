@@ -31,12 +31,27 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
       <Stat>
         <div>
           {selectedItem ? (
-            <div>
-              <p>{selectedItem.name}</p>
-              <p>Category: {selectedItem.weaponCategory}</p>
-              <p>Damage: {selectedItem.dmg1}</p>
-              <p>Value: {selectedItem.value}</p>
-            </div>
+            <>
+              <div>
+                <p>{selectedItem.name}</p>
+                <p>Category: {selectedItem.weaponCategory}</p>
+                <p>Damage: {selectedItem.dmg1}</p>
+                <p>Value: {selectedItem.value}</p>
+              </div>
+              <LabelText
+                htmlFor={`basicItemSlotArray.${index}.selectedItemAmount`}
+              >
+                Amount:
+              </LabelText>
+              <InputNumber
+                {...register(`basicItemSlotArray.${index}.selectedItemAmount`)}
+                id={`basicItemSlotArray.${index}.selectedItemAmount`}
+                max="1000000"
+                min="1"
+                name={`basicItemSlotArray.${index}.selectedItemAmount`}
+                placeholder="1"
+              />
+            </>
           ) : (
             ""
           )}
@@ -87,4 +102,9 @@ const ItemSelect = styled.select`
   overflow: hidden;
   white-space: pre;
   text-overflow: ellipsis;
+`;
+
+const InputNumber = styled.input.attrs({ type: "number" })`
+  width: 2rem;
+  font-size: 0.7rem;
 `;
