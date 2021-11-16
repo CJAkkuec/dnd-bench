@@ -143,7 +143,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                       name="charname"
                       {...register("charname", { required: true })}
                       id="charname"
-                      maxlength="50"
+                      maxLength="50"
                     />
                   </Stat>
 
