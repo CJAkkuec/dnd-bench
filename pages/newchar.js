@@ -121,8 +121,9 @@ export default function NewChar({ bench, addCharacterToBench }) {
         <Title>Create a new character</Title>
         <Intro>
           This is the character creation form. The only input required is your
-          character's name. Please keep in mind that if you don't provide any
-          information, some features of this app may not be working as intended.
+          character&#39;s name. Please keep in mind that if you don&#39;t
+          provide any information, some features of this app may not be working
+          as intended.
         </Intro>
         <MainWrapper>
           <form
@@ -203,7 +204,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                     <select {...register("align")} id="align" name="align">
                       {alignList.map((align) => {
                         return (
-                          <option key={align.name} value={align.index}>
+                          <option key={align.index} value={align.name}>
                             {align.name}
                           </option>
                         );
@@ -797,7 +798,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => spellAppend({ "selected-spell": "" })}
+                  onClick={() => spellAppend({ selectedSpell: "" })}
                 >
                   Add Spell
                 </Button>
@@ -813,7 +814,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => attackAppend({ "new-attack": "" })}
+                  onClick={() => attackAppend({ newAttack: "" })}
                 >
                   Add Attack
                 </Button>
@@ -834,7 +835,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => featAppend({ "selected-feat": "" })}
+                  onClick={() => featAppend({ selectedFeat: "" })}
                 >
                   Add Feature
                 </Button>
@@ -854,7 +855,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => profAppend({ proficiencies: "" })}
+                  onClick={() => profAppend({ proficiency: "" })}
                 >
                   Add Proficiencies
                 </Button>
@@ -871,7 +872,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => langAppend({ "selected-language": "" })}
+                  onClick={() => langAppend({ selectedLanguage: "" })}
                 >
                   Add Language
                 </Button>
@@ -893,7 +894,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => basicItemAppend({ "selected-item": "" })}
+                  onClick={() => basicItemAppend({ selectedItem: "" })}
                 >
                   Add Item
                 </Button>
@@ -910,7 +911,7 @@ export default function NewChar({ bench, addCharacterToBench }) {
                 </FormWrapper>
                 <Button
                   type="button"
-                  onClick={() => noteAppend({ "added-note": "" })}
+                  onClick={() => noteAppend({ addedNote: "" })}
                 >
                   Add Note
                 </Button>

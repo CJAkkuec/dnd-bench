@@ -3,7 +3,7 @@ import languageList from "/data/languages-data.json";
 import slugify from "slugify";
 
 export const LanguageSlot = ({ register, index, watch, langRemove }) => {
-  const value = watch(`languageSlotArray.${index}.selected-language`);
+  const value = watch(`languageSlotArray.${index}.selectedLanguage`);
   const selectedLanguage = languageList.find(
     (language) => slugify(language.name) === value
   );
@@ -11,11 +11,11 @@ export const LanguageSlot = ({ register, index, watch, langRemove }) => {
   return (
     <StatWrapper>
       <Stat>
-        <LabelText htmlFor={`languageSlotArray.${index}.selected-language`}>
+        <LabelText htmlFor={`languageSlotArray.${index}.selectedLanguage`}>
           Language {`${index + 1}`}
         </LabelText>
         <LangSelect
-          {...register(`languageSlotArray.${index}.selected-language`)}
+          {...register(`languageSlotArray.${index}.selectedLanguage`)}
         >
           <option value="">Select a language</option>
           {languageList.map((language) => {

@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { Dash } from "/components/Dash";
 
-export default function Home({}) {
+export default function Home({ bench }) {
   return (
     <MainStyle>
       <Header>
         <DnDiv>
           <DnD>D&amp;D</DnD>
-          <Bench>//Bench</Bench>
+          <Bench>&#47;&#47;Bench</Bench>
         </DnDiv>
       </Header>
       <Wrapper>
-        <Dash />
+        <Dash bench={bench} />
       </Wrapper>
     </MainStyle>
   );

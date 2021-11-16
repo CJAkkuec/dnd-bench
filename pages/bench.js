@@ -1,26 +1,40 @@
 import styled from "styled-components";
 import { Footer } from "/components/Footer";
+import Toggle from "react-toggle";
 
-export default function Bench({ bench, setBench }) {
-  const benchMapper = () => {
-    if (bench.length === 0) {
-      return <Empty>It's empty here!</Empty>;
-    } else {
-      return bench.map((benchItem) => {
-        return <BenchDiv>{benchItem.charname}</BenchDiv>;
-      });
-    }
-  };
-
+export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
   return (
     <>
       <MainStyle>
         <Title>Character Bench</Title>
         <Intro>
           This is the character bench. All of your characters will be stored
-          here. Your active character is marked red.
+          here. Use the toggle to activate your character.
         </Intro>
-        <Wrapper>{benchMapper()}</Wrapper>
+        <Wrapper>
+          {bench.characters.length !== 0 ? (
+            bench.characters.map((benchItem) => (
+              <BenchDiv key={benchItem.id}>
+                <Name>{benchItem.charname}</Name>
+                <ToggleDiv>
+                  <Toggle
+                    checked={bench.activeCharacterID === benchItem.id}
+                    name="characterIsActive"
+                    icons={false}
+                    onChange={() => {
+                      setActiveCharacter(benchItem.id);
+                    }}
+                  />
+                </ToggleDiv>
+                <Remove onClick={() => removeCharacter(benchItem.id)}>
+                  Remove
+                </Remove>
+              </BenchDiv>
+            ))
+          ) : (
+            <Empty>It&#39;s empty here ...</Empty>
+          )}
+        </Wrapper>
         <Footer />
       </MainStyle>
     </>
@@ -50,19 +64,33 @@ const Intro = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-content: center;
-  width: 100vw;
+  margin: auto;
+  width: 80vw;
+  gap: 1rem;
 `;
 
 const BenchDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   cursor: pointer;
-  text-align: center;
   padding: 1rem;
-  margin: 0 1.5rem 0.5rem 1.5rem;
   box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
 `;
 
 const Empty = styled.div`
-  margin-top: 10vh;
+  margin: 10vh auto auto auto;
   color: grey;
+`;
+
+const Name = styled.div``;
+
+const ToggleDiv = styled.div`
+  display: flex;
+`;
+
+const Remove = styled.div`
+  color: grey;
+  font-size: 0.8rem;
 `;

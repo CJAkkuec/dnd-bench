@@ -5,11 +5,11 @@ export const NoteSlot = ({ register, index, noteRemove }) => {
   return (
     <StatWrapper>
       <Stat>
-        <LabelText htmlFor={`notesArray.${index}.added-note`}>
+        <LabelText htmlFor={`notesArray.${index}.addedNote`}>
           Note {`${index + 1}`}
         </LabelText>
         <NoteInput
-          {...register(`notesArray.${index}.added-note`)}
+          {...register(`notesArray.${index}.addedNote`)}
           placeholder="Add a note"
         ></NoteInput>
         <Button type="button" onClick={() => noteRemove(index)}>

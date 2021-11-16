@@ -3,7 +3,7 @@ import spellList from "../data/spell-data.json";
 import slugify from "slugify";
 
 export const SpellSlot = ({ register, index, watch, spellRemove }) => {
-  const value = watch(`spellSlotArray.${index}.selected-spell`);
+  const value = watch(`spellSlotArray.${index}.selectedSpell`);
   const selectedSpell = spellList.find(
     (spell) => slugify(spell.name) === value
   );
@@ -12,10 +12,10 @@ export const SpellSlot = ({ register, index, watch, spellRemove }) => {
     <>
       <StatWrapper>
         <Stat>
-          <LabelText htmlFor={`selected-spell_${index}`}>
+          <LabelText htmlFor={`spellSlotArray.${index}.selectedSpell`}>
             Spell {`${index + 1}`}
           </LabelText>
-          <SpellSelect {...register(`spellSlotArray.${index}.selected-spell`)}>
+          <SpellSelect {...register(`spellSlotArray.${index}.selectedSpell`)}>
             <option value="">Select a spell</option>
             {spellList.map((spell) => {
               return (
