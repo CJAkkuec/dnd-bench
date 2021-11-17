@@ -1,28 +1,33 @@
 import styled from "styled-components";
-import basicItemsList from "../data/basicitems-data.json";
+import specialItemsList from "../data/items-data.json";
 import slugify from "slugify";
 
-export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
-  const value = watch(`basicItemSlotArray.${index}.selectedItem`);
-  const selectedItem = basicItemsList.find(
-    (basicItem) => slugify(basicItem.name) === value
+export const SpecialItemSlot = ({
+  register,
+  index,
+  watch,
+  basicItemRemove,
+}) => {
+  const value = watch(`specialItemSlotArray.${index}.selectedItem`);
+  const selectedItem = specialItemsList.item.find(
+    (specialItem) => slugify(specialItem.name) === value
   );
 
   return (
     <StatWrapper>
       <Stat>
-        <LabelText htmlFor={`basicItemSlotArray.${index}.selectedItem`}>
-          Item {`${index + 1}`}
+        <LabelText htmlFor={`specialItemSlotArray.${index}.selectedItem`}>
+          Special Item {`${index + 1}`}
         </LabelText>
-        <ItemSelect {...register(`basicItemSlotArray.${index}.selectedItem`)}>
+        <ItemSelect {...register(`specialItemSlotArray.${index}.selectedItem`)}>
           <option value="">Select an item</option>
-          {basicItemsList.map((basicItem) => {
+          {specialItemsList.item.map((specialItem) => {
             return (
               <option
-                key={slugify(basicItem.name)}
-                value={slugify(basicItem.name)}
+                key={slugify(specialItem.name)}
+                value={slugify(specialItem.name)}
               >
-                {basicItem.name}
+                {specialItem.name}
               </option>
             );
           })}
@@ -34,21 +39,25 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
             <>
               <div>
                 <p>{selectedItem.name}</p>
-                <p>Category: {selectedItem.weaponCategory}</p>
-                <p>Damage: {selectedItem.dmg1}</p>
+                <p>Category: {selectedItem.type}</p>
                 <p>Value: {selectedItem.value}</p>
+                {selectedItem.entries !== undefined
+                  ? selectedItem.entries.map((entry) => <div>{entry}</div>)
+                  : ""}
               </div>
               <LabelText
-                htmlFor={`basicItemSlotArray.${index}.selectedItemAmount`}
+                htmlFor={`specialItemSlotArray.${index}.selectedItemAmount`}
               >
                 Amount:
               </LabelText>
               <InputNumber
-                {...register(`basicItemSlotArray.${index}.selectedItemAmount`)}
-                id={`basicItemSlotArray.${index}.selectedItemAmount`}
+                {...register(
+                  `specialItemSlotArray.${index}.selectedItemAmount`
+                )}
+                id={`specialItemSlotArray.${index}.selectedItemAmount`}
                 max="1000000"
                 min="1"
-                name={`basicItemSlotArray.${index}.selectedItemAmount`}
+                name={`specialItemSlotArray.${index}.selectedItemAmount`}
                 placeholder="1"
               />
             </>
@@ -58,7 +67,7 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
         </div>
       </Stat>
       <ButtonWrapper>
-        <Button type="button" onClick={() => basicItemRemove(index)}>
+        <Button type="button" onClick={() => specialItemRemove(index)}>
           Delete
         </Button>
       </ButtonWrapper>

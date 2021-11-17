@@ -355,14 +355,35 @@ export default function MyChar({ getCurrentCharacter }) {
                     );
                   })}
                 </ConditionalWrapper>
+              </FieldWrapper>
 
+              <FieldWrapper>
                 <ConditionalWrapper>
                   <p>Basic Items</p>
                   {currentCharacter.basicItemSlotArray.map((itemSlot) => {
                     return (
                       <div key={itemSlot.selectedItem}>
-                        <p>{itemSlot.selectedItem}</p>
-                        <p>x{itemSlot.selectedItemAmount}</p>
+                        <p>
+                          {itemSlot.selectedItem} x
+                          {itemSlot.selectedItemAmount < 1
+                            ? "1"
+                            : itemSlot.selectedItemAmount}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </ConditionalWrapper>
+                <ConditionalWrapper>
+                  <p>Special Items</p>
+                  {currentCharacter.specialItemSlotArray.map((itemSlot) => {
+                    return (
+                      <div key={itemSlot.selectedItem}>
+                        <p>
+                          {itemSlot.selectedItem} x
+                          {itemSlot.selectedItemAmount < 1
+                            ? "1"
+                            : itemSlot.selectedItemAmount}
+                        </p>
                       </div>
                     );
                   })}
@@ -551,6 +572,7 @@ const ThrowWrapper = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 0.7rem;
+  padding: 0.3rem;
 
   & > div:nth-child(even) {
     background: rgba(58, 82, 118, 0.24);
@@ -568,10 +590,8 @@ const SingleThrowWrapper = styled.div`
 
 const StatFieldWrapper = styled.div`
   width: 32%;
-  border: 1px solid rgba(58, 82, 118, 0.24);
   display: flex;
   flex-direction: column;
-  padding: 0.3rem;
 `;
 
 const DiverseStatWrapper = styled.div`

@@ -4,7 +4,7 @@ import slugify from "slugify";
 
 export const FeatSlot = ({ register, index, watch, featRemove }) => {
   const value = watch(`featSlotArray.${index}.selectedFeat`);
-  const selectedFeat = featList.find((feat) => slugify(feat.name) === value);
+  const selectedFeat = featList.find((feat) => feat.name === value);
 
   return (
     <>
@@ -17,7 +17,7 @@ export const FeatSlot = ({ register, index, watch, featRemove }) => {
             <option value="">Select a Feature</option>
             {featList.map((feat) => {
               return (
-                <option key={slugify(feat.name)} value={slugify(feat.name)}>
+                <option key={slugify(feat.name)} value={feat.name}>
                   {feat.name}
                 </option>
               );
@@ -58,6 +58,7 @@ const StatWrapper = styled.div`
   width: 43vw;
   height: 100%;
   margin-bottom: 0.3rem;
+  font-size: 0.8rem;
 `;
 
 const Button = styled.button`

@@ -46,6 +46,7 @@ const StatWrapper = styled.div`
   width: 43vw;
   height: 100%;
   margin-bottom: 0.3rem;
+  font-size: 0.8rem;
 `;
 
 const Button = styled.button`

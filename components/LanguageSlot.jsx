@@ -91,6 +91,7 @@ const Button = styled.button`
   font-size: 0.8rem;
   text-align: center;
   margin-top: 0.3rem;
+  font-size: 0.8rem;
 `;
 
 const ButtonWrapper = styled.div`

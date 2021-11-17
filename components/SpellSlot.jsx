@@ -5,9 +5,7 @@ import Collapsible from "react-collapsible";
 
 export const SpellSlot = ({ register, index, watch, spellRemove }) => {
   const value = watch(`spellSlotArray.${index}.selectedSpell`);
-  const selectedSpell = spellList.find(
-    (spell) => slugify(spell.name) === value
-  );
+  const selectedSpell = spellList.find((spell) => spell.name === value);
 
   return (
     <>
@@ -20,7 +18,7 @@ export const SpellSlot = ({ register, index, watch, spellRemove }) => {
             <option value="">Select a spell</option>
             {spellList.map((spell) => {
               return (
-                <option key={slugify(spell.name)} value={slugify(spell.name)}>
+                <option key={slugify(spell.name)} value={spell.name}>
                   {spell.name}
                 </option>
               );
@@ -29,8 +27,7 @@ export const SpellSlot = ({ register, index, watch, spellRemove }) => {
 
           {selectedSpell ? (
             <SpellSlotContainer>
-              <p>Spell details</p>
-              <Collapsible trigger={selectedSpell.name}>
+              <Collapsible trigger="Spell Details">
                 <div
                   dangerouslySetInnerHTML={{ __html: selectedSpell.desc }}
                 ></div>
@@ -67,6 +64,7 @@ const StatWrapper = styled.div`
   width: 43vw;
   height: 100%;
   margin-bottom: 0.3rem;
+  font-size: 0.8rem;
 `;
 
 const Button = styled.button`
