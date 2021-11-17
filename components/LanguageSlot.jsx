@@ -48,7 +48,7 @@ export const LanguageSlot = ({ register, index, watch, languageRemove }) => {
               <p>
                 Typical Speakers:{" "}
                 {selectedLanguage.typicalSpeakers.map((speaker) => {
-                  return <span>{speaker}</span>;
+                  return <span key={speaker}>{speaker}</span>;
                 })}
               </p>
             </div>
