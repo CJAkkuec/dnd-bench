@@ -31,7 +31,9 @@ export const Dash = ({ bench }) => {
           </Link>
         </DashItem>
         <DashItem>
-          <ItemP>Battle Mode</ItemP>
+          <Link passHref href="/battle">
+            <ItemP>Battle Mode</ItemP>
+          </Link>
         </DashItem>
       </DashDiv>
     </>

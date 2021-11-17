@@ -6,8 +6,15 @@ const initialBenchState = {
   characters: [],
   activeCharacterID: null,
 };
+
+const initialEditState = {};
+
 function MyApp({ Component, pageProps }) {
   const [bench, setBench] = useLocalStorage("bench", initialBenchState);
+  const [characterToEdit, setCharacterToEdit] = useLocalStorage(
+    "toEdit",
+    initialEditState
+  );
 
   function addCharacterToBench(charObject) {
     const newCharacter = {
@@ -19,6 +26,19 @@ function MyApp({ Component, pageProps }) {
       characters: [...bench.characters, newCharacter],
     });
   }
+
+  const updateCharacter = (charObject) => {
+    const characterIndex = bench.characters.findIndex(
+      (character) => charObject.id === character.id
+    );
+    const updatedCharacters = [...bench.characters];
+    updatedCharacters[characterIndex] = charObject;
+
+    setBench({
+      ...bench,
+      characters: updatedCharacters,
+    });
+  };
 
   const getCurrentCharacter = () =>
     bench.characters.find(({ id }) => id === bench.activeCharacterID);
@@ -42,6 +62,8 @@ function MyApp({ Component, pageProps }) {
       setActiveCharacter={setActiveCharacter}
       removeCharacter={removeCharacter}
       getCurrentCharacter={getCurrentCharacter}
+      characterToEdit={characterToEdit}
+      updateCharacter={updateCharacter}
     />
   );
 }
