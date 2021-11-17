@@ -7,6 +7,7 @@ import useFormPersist from "react-hook-form-persist";
 import { Footer } from "/components/Footer";
 import { SpellSlot } from "../components/SpellSlot";
 import { BasicItemSlot } from "/components/BasicItemSlot";
+import { SpecialItemSlot } from "./SpecialItemSlot";
 import { NoteSlot } from "../components/NoteSlot";
 import { LanguageSlot } from "../components/LanguageSlot";
 import { AttackSlot } from "../components/AttackSlot";
@@ -83,6 +84,15 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
   } = useFieldArray({
     control,
     name: "basicItemSlotArray",
+  });
+
+  const {
+    fields: specialItemFields,
+    append: specialItemAppend,
+    remove: specialItemRemove,
+  } = useFieldArray({
+    control,
+    name: "specialItemSlotArray",
   });
 
   const {
@@ -959,7 +969,25 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                   type="button"
                   onClick={() => basicItemAppend({ selectedItem: "" })}
                 >
-                  Add Item
+                  Add Basic Item
+                </Button>
+
+                <FormWrapper>
+                  {specialItemFields.map((field, index) => (
+                    <SpecialItemSlot
+                      register={register}
+                      watch={watch}
+                      index={index}
+                      specialItemRemove={specialItemRemove}
+                      key={field.id}
+                    />
+                  ))}
+                </FormWrapper>
+                <Button
+                  type="button"
+                  onClick={() => specialItemAppend({ selectedItem: "" })}
+                >
+                  Add Special Item
                 </Button>
 
                 <FormWrapper>
@@ -1116,6 +1144,7 @@ const Intro = styled.div`
 const FlavorText = styled.textarea`
   width: 100%;
   height: 2.5rem;
+  font-family: Roboto;
 `;
 
 const Vitwrapper = styled.div`

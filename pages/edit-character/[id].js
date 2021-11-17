@@ -15,6 +15,8 @@ const EditCharacter = ({ bench, updateCharacter }) => {
     (character) => character.id === id
   );
 
+  if (!characterToEdit) return null;
+
   return (
     <CharacterForm
       onSubmit={handleSubmit}
