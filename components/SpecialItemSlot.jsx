@@ -42,7 +42,9 @@ export const SpecialItemSlot = ({
                 <p>Category: {selectedItem.type}</p>
                 <p>Value: {selectedItem.value}</p>
                 {selectedItem.entries !== undefined
-                  ? selectedItem.entries.map((entry) => <div>{entry}</div>)
+                  ? selectedItem.entries.map((entry) => (
+                      <div key={entry}>{entry}</div>
+                    ))
                   : ""}
               </div>
               <LabelText
