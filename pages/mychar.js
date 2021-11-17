@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { Footer } from "/components/Footer";
+import Link from "next/dist/client/link";
 
-export default function MyChar({ bench, getCurrentCharacter }) {
+export default function MyChar({ getCurrentCharacter }) {
   const currentCharacter = getCurrentCharacter();
-  /*Include Edit function 
-  Send info to form*/
 
   return (
     <>
@@ -14,7 +13,12 @@ export default function MyChar({ bench, getCurrentCharacter }) {
             <Empty>It&#39;s empty here ...</Empty>
           ) : (
             <>
-              <CharacterName>{currentCharacter.charname}</CharacterName>
+              <CharacterName>
+                <p>{currentCharacter.charname}</p>
+                <Link href={`/edit-character/${currentCharacter.id}`}>
+                  <a>edit</a>
+                </Link>
+              </CharacterName>
               <BaseInfoWrapper>
                 <p>{currentCharacter.classtype}</p>
                 <p>Level {currentCharacter.level}</p>
@@ -351,9 +355,7 @@ export default function MyChar({ bench, getCurrentCharacter }) {
                     );
                   })}
                 </ConditionalWrapper>
-              </FieldWrapper>
 
-              <FieldWrapper>
                 <ConditionalWrapper>
                   <p>Basic Items</p>
                   {currentCharacter.basicItemSlotArray.map((itemSlot) => {
@@ -365,6 +367,9 @@ export default function MyChar({ bench, getCurrentCharacter }) {
                     );
                   })}
                 </ConditionalWrapper>
+              </FieldWrapper>
+
+              <FieldWrapper>
                 <ConditionalWrapper>
                   <p>Character Notes</p>
                   {currentCharacter.notesArray.map((noteSlot) => {
@@ -373,9 +378,6 @@ export default function MyChar({ bench, getCurrentCharacter }) {
                     );
                   })}
                 </ConditionalWrapper>
-              </FieldWrapper>
-
-              <FieldWrapper>
                 <ConditionalWrapper>
                   <p>Personality</p>
                   <div>{currentCharacter.personality}</div>
@@ -406,6 +408,7 @@ const MainStyle = styled.div`
   padding: 0;
   margin: 0;
   font-family: Roboto;
+  font-weight: 300;
 `;
 
 const Empty = styled.div`
@@ -434,7 +437,7 @@ const StatWrapper = styled.div`
   padding: 0.3rem;
   font-size: 0.7rem;
   gap: 0.3rem;
-  background: lightgrey;
+  background: rgba(58, 82, 118, 0.24);
 `;
 
 const SingleStatWrapper = styled.div`
@@ -470,13 +473,26 @@ const BaseInfoWrapper = styled.div`
 `;
 
 const CharacterName = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
   padding: 0.1rem 0 0.1rem 0.4rem;
   font-size: 1.3rem;
   font-family: serif;
   font-weight: bold;
-  background: black;
+  background: rgba(58, 82, 118, 1);
   color: white;
   margin-bottom: 0.5rem;
+  & > p {
+    margin: 0;
+  }
+  & > a:nth-child(2) {
+    font-size: 1rem;
+    font-weight: 100;
+    font-family: "Roboto";
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
 `;
 
 const FieldWrapper = styled.div`
@@ -490,7 +506,8 @@ const FieldWrapper = styled.div`
 const SecondaryStatWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.2rem;
+  justify-content: space-between;
+  gap: 0.3rem;
 `;
 
 const ConditionalWrapper = styled.div`
@@ -499,7 +516,7 @@ const ConditionalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   & > p {
-    background: lightgrey;
+    background: rgba(58, 82, 118, 0.24);
     margin: 0 0 0.3rem 0;
   }
 
@@ -536,7 +553,7 @@ const ThrowWrapper = styled.div`
   font-size: 0.7rem;
 
   & > div:nth-child(even) {
-    background: lightgrey;
+    background: rgba(58, 82, 118, 0.24);
   }
 `;
 
@@ -550,21 +567,20 @@ const SingleThrowWrapper = styled.div`
 `;
 
 const StatFieldWrapper = styled.div`
-  width: 31%;
-  border: 1px solid lightgrey;
+  width: 32%;
+  border: 1px solid rgba(58, 82, 118, 0.24);
   display: flex;
   flex-direction: column;
   padding: 0.3rem;
 `;
 
 const DiverseStatWrapper = styled.div`
-  width: 5rem;
+  width: 32%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   padding: 0.3rem;
   font-size: 0.7rem;
-  gap: 0.3rem;
-  background: lightgrey;
+  background: rgba(58, 82, 118, 0.24);
 `;

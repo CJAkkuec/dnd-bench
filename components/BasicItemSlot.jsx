@@ -68,6 +68,7 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
 
 const LabelText = styled.p`
   margin: 0.2rem 0 0.2rem 0;
+  font-size: 0.8rem;
 `;
 
 const Stat = styled.label``;
@@ -75,15 +76,16 @@ const Stat = styled.label``;
 const StatWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  background: rgba(58, 82, 118, 0.1);
   padding: 0.5rem;
   width: 43vw;
   height: 100%;
+  margin-bottom: 0.3rem;
 `;
 
 const Button = styled.button`
-  background: grey;
-  color: white;
+  background: rgba(58, 82, 118, 0.24);
+  color: black;
   border: none;
   padding: 0.3rem;
   width: auto;

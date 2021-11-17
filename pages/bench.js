@@ -3,6 +3,12 @@ import { Footer } from "/components/Footer";
 import Toggle from "react-toggle";
 
 export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
+  const handleRemove = (id) => {
+    if (confirm("Are you sure you want to delete this character?")) {
+      removeCharacter(id);
+    }
+  };
+
   return (
     <>
       <MainStyle>
@@ -26,7 +32,7 @@ export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
                     }}
                   />
                 </ToggleDiv>
-                <Remove onClick={() => removeCharacter(benchItem.id)}>
+                <Remove onClick={() => handleRemove(benchItem.id)}>
                   Remove
                 </Remove>
               </BenchDiv>
@@ -45,11 +51,12 @@ const MainStyle = styled.div`
   padding: 0;
   margin: 0;
   font-family: Roboto;
+  font-weight: 300;
 `;
 
 const Title = styled.div`
   margin-bottom: 1rem;
-  background: grey;
+  background: rgba(58, 82, 118, 1);
   color: white;
   padding: 0.4rem;
   width: 50vw;
@@ -64,7 +71,7 @@ const Intro = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: auto auto 5rem auto;
   width: 80vw;
   gap: 1rem;
 `;

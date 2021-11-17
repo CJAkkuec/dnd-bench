@@ -19,6 +19,7 @@ export default function Home({ bench }) {
 
 const MainStyle = styled.div`
   font-family: Roboto;
+  font-weight: 300;
 `;
 
 const Header = styled.div`
@@ -33,7 +34,7 @@ const DnD = styled.p`
   color: red;
   font-family: serif;
   font-size: 25pt;
-  font-weight: bolder;
+  font-weight: 600;
   margin: 0;
 `;
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import spellList from "../data/spell-data.json";
 import slugify from "slugify";
+import Collapsible from "react-collapsible";
 
 export const SpellSlot = ({ register, index, watch, spellRemove }) => {
   const value = watch(`spellSlotArray.${index}.selectedSpell`);
@@ -28,12 +29,14 @@ export const SpellSlot = ({ register, index, watch, spellRemove }) => {
 
           {selectedSpell ? (
             <SpellSlotContainer>
-              <p>{selectedSpell.name}</p>
-              <div
-                dangerouslySetInnerHTML={{ __html: selectedSpell.desc }}
-              ></div>
-              <p>Components: {selectedSpell.components}</p>
-              <p>Range: {selectedSpell.range}</p>
+              <p>Spell details</p>
+              <Collapsible trigger={selectedSpell.name}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: selectedSpell.desc }}
+                ></div>
+                <p>Components: {selectedSpell.components}</p>
+                <p>Range: {selectedSpell.range}</p>
+              </Collapsible>
             </SpellSlotContainer>
           ) : (
             ""
@@ -51,6 +54,7 @@ export const SpellSlot = ({ register, index, watch, spellRemove }) => {
 
 const LabelText = styled.p`
   margin: 0.2rem 0 0.2rem 0;
+  font-size: 0.8rem;
 `;
 
 const Stat = styled.label``;
@@ -58,16 +62,16 @@ const Stat = styled.label``;
 const StatWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid grey;
+  background: rgba(58, 82, 118, 0.1);
   padding: 0.5rem;
   width: 43vw;
   height: 100%;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 `;
 
 const Button = styled.button`
-  background: grey;
-  color: white;
+  background: rgba(58, 82, 118, 0.24);
+  color: black;
   border: none;
   padding: 0.3rem;
   width: auto;
