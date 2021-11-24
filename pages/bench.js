@@ -1,13 +1,50 @@
 import styled from "styled-components";
 import { Footer } from "/components/Footer";
 import Toggle from "react-toggle";
+import { useEffect, useState } from "react";
+import Link from "next/dist/client/link";
+import { motion } from "framer-motion";
 
-export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
-  const handleRemove = (id) => {
-    if (confirm("Are you sure you want to delete this character?")) {
-      removeCharacter(id);
-    }
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+
+import { useSnackbar } from "notistack";
+
+export default function Bench({
+  bench,
+  setActiveCharacter,
+  removeCharacter,
+  checkForNewCharacter,
+}) {
+  const [open, setOpen] = useState(false);
+  const [removeID, setRemoveID] = useState();
+  const [removeName, setRemoveName] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleRemove = () => {
+    removeCharacter(removeID);
+    setOpen(false);
+    enqueueSnackbar("Character deleted!", {
+      variant: "success",
+      autoHideDuration: 2000,
+    });
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  useEffect(() => {
+    checkForNewCharacter();
+  }, []);
 
   return (
     <>
@@ -15,12 +52,21 @@ export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
         <Title>Character Bench</Title>
         <Intro>
           This is the character bench. All of your characters will be stored
-          here. Use the toggle to activate your character.
+          here. Use the toggle to activate your character. If none of your
+          characters are set as active, the current page will be empty.
         </Intro>
         <Wrapper>
           {bench.characters.length !== 0 ? (
             bench.characters.map((benchItem) => (
-              <BenchDiv key={benchItem.id}>
+              <BenchDiv
+                key={benchItem.id}
+                animate={{
+                  scale: [0.95, 1.05, 1],
+                  backgroundColor: ["#95a8c4", "#FFF"],
+                }}
+                transition={{ type: "spring", duration: 0.5 }}
+                initial={benchItem.isNew}
+              >
                 <Name>{benchItem.charname}</Name>
                 <ToggleDiv>
                   <Toggle
@@ -32,7 +78,16 @@ export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
                     }}
                   />
                 </ToggleDiv>
-                <Remove onClick={() => handleRemove(benchItem.id)}>
+                <Link href={`/edit-character/${benchItem.id}`}>
+                  <Edit>Edit</Edit>
+                </Link>
+                <Remove
+                  onClick={() => {
+                    setRemoveID(benchItem.id);
+                    setRemoveName(benchItem.charname);
+                    handleClickOpen();
+                  }}
+                >
                   Remove
                 </Remove>
               </BenchDiv>
@@ -41,6 +96,27 @@ export default function Bench({ bench, setActiveCharacter, removeCharacter }) {
             <Empty>It&#39;s empty here ...</Empty>
           )}
         </Wrapper>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title" sx={{ wordWrap: "break-word" }}>
+            {`Delete your character ${removeName}?`}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              This action is permanent.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={handleRemove} autoFocus>
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
         <Footer />
       </MainStyle>
     </>
@@ -76,14 +152,14 @@ const Wrapper = styled.div`
   gap: 1rem;
 `;
 
-const BenchDiv = styled.div`
+const BenchDiv = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   cursor: pointer;
   padding: 1rem;
-  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
+  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.2);
 `;
 
 const Empty = styled.div`
@@ -91,13 +167,25 @@ const Empty = styled.div`
   color: grey;
 `;
 
-const Name = styled.div``;
+const Name = styled.p`
+  margin: 0;
+  padding: 0;
+  width: 30%;
+  word-wrap: break-word;
+`;
 
 const ToggleDiv = styled.div`
   display: flex;
+  width: 30%;
+  justify-content: center;
 `;
 
 const Remove = styled.div`
+  color: grey;
+  font-size: 0.8rem;
+`;
+
+const Edit = styled.a`
   color: grey;
   font-size: 0.8rem;
 `;

@@ -30,11 +30,6 @@ export const Dash = ({ bench }) => {
             <ItemP>Character Bench</ItemP>
           </Link>
         </DashItem>
-        <DashItem>
-          <Link passHref href="/battle">
-            <ItemP>Battle Mode</ItemP>
-          </Link>
-        </DashItem>
       </DashDiv>
     </>
   );
@@ -50,10 +45,17 @@ const DashItem = styled.div`
   cursor: pointer;
   padding: 1rem;
   margin: 0.5rem 1.5rem 0.5rem 1.5rem;
-  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
+  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.2);
 `;
 
 const ItemP = styled.p`
   text-align: center;
   margin: 0;
+  word-wrap: break-word;
 `;
+
+/*  <DashItem>
+          <Link passHref href="/battle">
+            <ItemP>Battle Mode</ItemP>
+          </Link>
+        </DashItem> */

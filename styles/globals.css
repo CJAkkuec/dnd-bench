@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
 html,
 body {
@@ -21,7 +23,7 @@ a {
 
 .Collapsible {
   padding: 0.4rem;
-  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
+  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.2);
   margin-bottom: 1rem;
   width: 100%;
   background: white;
@@ -29,6 +31,10 @@ a {
 
 .Collapsible__trigger.is-open {
   background: rgba(58, 82, 118, 0.24);
+}
+.Collapsible__trigger.is-closed {
+  display: block;
+  width: 100%;
 }
 
 .react-toggle {

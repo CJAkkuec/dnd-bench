@@ -38,7 +38,6 @@ export const SpecialItemSlot = ({
           {selectedItem ? (
             <>
               <div>
-                <p>{selectedItem.name}</p>
                 <p>Category: {selectedItem.type}</p>
                 <p>Value: {selectedItem.value}</p>
                 {selectedItem.entries !== undefined

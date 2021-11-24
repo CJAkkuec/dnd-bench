@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import { v4 as uuidv4 } from "uuid";
 import { useLocalStorage } from "../utils/useLocalStorage";
+import { SnackbarProvider } from "notistack";
+import { Slide } from "@mui/material";
 
 const initialBenchState = {
   characters: [],
@@ -16,11 +18,42 @@ function MyApp({ Component, pageProps }) {
     initialEditState
   );
 
+  const checkForNewCharacter = () => {
+    const updatedBench = bench.characters.map((character) => {
+      if (character.isNew) {
+        return { ...character, isNew: false };
+      }
+      return character;
+    });
+    setBench({
+      ...bench,
+      characters: updatedBench,
+    });
+  };
+
   function addCharacterToBench(charObject) {
+    const { languageSlotArray } = charObject;
+    const languages = new Set();
+    languageSlotArray.forEach((language) => {
+      languages.add(language.selectedLanguage);
+    });
+
+    const newLanguageSlotArray = [...languages];
+
+    const languageObject = newLanguageSlotArray.map((language) => {
+      return { selectedLanguage: language };
+    });
+
+    console.log(charObject);
+
     const newCharacter = {
       id: uuidv4(),
+      isNew: true,
       ...charObject,
+      languageSlotArray: languageObject,
     };
+
+    console.log(newCharacter);
     setBench({
       ...bench,
       characters: [...bench.characters, newCharacter],
@@ -55,16 +88,25 @@ function MyApp({ Component, pageProps }) {
   };
 
   return (
-    <Component
-      {...pageProps}
-      bench={bench}
-      addCharacterToBench={addCharacterToBench}
-      setActiveCharacter={setActiveCharacter}
-      removeCharacter={removeCharacter}
-      getCurrentCharacter={getCurrentCharacter}
-      characterToEdit={characterToEdit}
-      updateCharacter={updateCharacter}
-    />
+    <SnackbarProvider
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      TransitionComponent={Slide}
+    >
+      <Component
+        {...pageProps}
+        bench={bench}
+        addCharacterToBench={addCharacterToBench}
+        setActiveCharacter={setActiveCharacter}
+        removeCharacter={removeCharacter}
+        getCurrentCharacter={getCurrentCharacter}
+        characterToEdit={characterToEdit}
+        updateCharacter={updateCharacter}
+        checkForNewCharacter={checkForNewCharacter}
+      />
+    </SnackbarProvider>
   );
 }
 

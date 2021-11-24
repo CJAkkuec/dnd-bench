@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import languageList from "/data/languages-data.json";
 import slugify from "slugify";
+import { useEffect } from "react";
 
 export const LanguageSlot = ({ register, index, watch, languageRemove }) => {
   const value = watch(`languageSlotArray.${index}.selectedLanguage`);
@@ -46,7 +47,7 @@ export const LanguageSlot = ({ register, index, watch, languageRemove }) => {
               )}
 
               <p>
-                Typical Speakers:{" "}
+                Typical Speakers:
                 {selectedLanguage.typicalSpeakers.map((speaker) => {
                   return <span key={speaker}>{speaker}</span>;
                 })}
@@ -68,6 +69,7 @@ export const LanguageSlot = ({ register, index, watch, languageRemove }) => {
 
 const LabelText = styled.p`
   margin: 0.2rem 0 0.2rem 0;
+  font-size: 0.8rem;
 `;
 
 const Stat = styled.label``;
@@ -80,6 +82,8 @@ const StatWrapper = styled.div`
   width: 43vw;
   height: 100%;
   margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+  text-transform: capitalize;
 `;
 
 const Button = styled.button`

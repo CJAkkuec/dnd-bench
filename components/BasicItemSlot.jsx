@@ -33,7 +33,6 @@ export const BasicItemSlot = ({ register, index, watch, basicItemRemove }) => {
           {selectedItem ? (
             <>
               <div>
-                <p>{selectedItem.name}</p>
                 <p>Category: {selectedItem.weaponCategory}</p>
                 <p>Damage: {selectedItem.dmg1}</p>
                 <p>Value: {selectedItem.value}</p>

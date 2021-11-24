@@ -1,11 +1,24 @@
 import { CharacterForm } from "../components/CharacterForm";
+import { useRouter } from "next/dist/client/router";
+import { useSnackbar } from "notistack";
 
 export default function NewChar({ addCharacterToBench }) {
+  const router = useRouter();
+
+  const { enqueueSnackbar } = useSnackbar();
+
   const handleSubmit = (data) => {
     addCharacterToBench(data);
-    alert("Your character has been created.");
-    window.location = "/bench";
+    enqueueSnackbar("Character created!", {
+      variant: "success",
+      autoHideDuration: 2000,
+    });
+    router.push("/bench");
   };
 
-  return <CharacterForm onSubmit={handleSubmit} />;
+  return (
+    <>
+      <CharacterForm onSubmit={handleSubmit} />
+    </>
+  );
 }
