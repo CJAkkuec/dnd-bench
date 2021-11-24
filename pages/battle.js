@@ -12,7 +12,7 @@ export default function Battle({ getCurrentCharacter }) {
     if (currentCharacter?.hp) {
       setCharacterHP(parseInt(currentCharacter.hp, 10));
     }
-  }, [currentCharacter?.hp]);
+  }, [currentCharacter?.hp, setCharacterHP]);
 
   /*https://scotch.io/courses/10-react-challenges-beginner/adding-calculator */
 
