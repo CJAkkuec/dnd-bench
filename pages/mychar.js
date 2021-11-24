@@ -13,21 +13,25 @@ export default function MyChar({ getCurrentCharacter }) {
             <Empty>It&#39;s empty here ...</Empty>
           ) : (
             <>
-              <CharacterName>
-                <p>{currentCharacter.charname}</p>
-                <Link href={`/edit-character/${currentCharacter.id}`}>
-                  <a>edit</a>
-                </Link>
-              </CharacterName>
-              <BaseInfoWrapper>
-                <p>{currentCharacter.classtype}</p>
-                <p>Level {currentCharacter.level}</p>
-                <p>{currentCharacter.bg}</p>
-              </BaseInfoWrapper>
-              <BaseInfoWrapper>
-                <p>{currentCharacter.race}</p>
-                <p>{currentCharacter.align}</p>
-              </BaseInfoWrapper>
+              <div>
+                <CharacterName>
+                  <p>{currentCharacter.charname}</p>
+                  <Link href={`/edit-character/${currentCharacter.id}`}>
+                    <a>edit</a>
+                  </Link>
+                </CharacterName>
+                <BaseInfoWrapper>
+                  <div>
+                    <p>{currentCharacter.classtype}</p>
+                    <p>Level {currentCharacter.level}</p>
+                  </div>
+                  <div>
+                    <p>{currentCharacter.bg}</p>
+                    <p>{currentCharacter.race}</p>
+                    <p>{currentCharacter.align}</p>
+                  </div>
+                </BaseInfoWrapper>
+              </div>
 
               <FieldWrapper>
                 <MainStatWrapper>
@@ -433,13 +437,19 @@ const MainStyle = styled.div`
 `;
 
 const Empty = styled.div`
-  margin: 10vh auto auto auto;
+  display: flex;
+  justify-content: center;
+  margin: 20vh auto;
+  padding: 0;
   color: grey;
 `;
 
 const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
+  gap: 1rem;
 `;
 
 const MainStatWrapper = styled.div`
@@ -485,8 +495,16 @@ const StyledStat = styled.p`
 
 const BaseInfoWrapper = styled.div`
   display: flex;
-  gap: 1rem;
-  & > p {
+  flex-direction: column;
+
+  & div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-left: 0.2rem;
+  }
+
+  & div > p {
     margin: 0;
     font-size: 0.8rem;
     padding: 0.2rem;
@@ -497,21 +515,22 @@ const CharacterName = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 0.1rem 0 0.1rem 0.4rem;
+  gap: 2rem;
+  padding: 0.2rem 0.4rem 0.2rem 0.4rem;
   font-size: 1.3rem;
-  font-family: serif;
-  font-weight: bold;
+  font-family: "Lora";
+  font-weight: normal;
   background: rgba(58, 82, 118, 1);
   color: white;
-  margin-bottom: 0.5rem;
   & > p {
     margin: 0;
+    word-break: break-word;
   }
   & > a:nth-child(2) {
     font-size: 1rem;
     font-weight: 100;
     font-family: "Roboto";
-    margin-right: 0.5rem;
+
     cursor: pointer;
   }
 `;
@@ -520,7 +539,6 @@ const FieldWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 1rem;
   gap: 0.3rem;
 `;
 
@@ -536,34 +554,39 @@ const ConditionalWrapper = styled.div`
   font-size: 0.8rem;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0.3rem;
   & > p {
     background: rgba(58, 82, 118, 0.24);
     margin: 0 0 0.3rem 0;
+    padding: 0 0 0 0.2rem;
   }
 
   & div > p {
     margin: 0;
+    padding: 0 0 0 0.2rem;
+  }
+
+  & div {
+    padding: 0 0 0 0.2rem;
   }
 `;
 
 const StyledNumber = styled.p`
   background: white;
-  font-family: serif;
-  font-size: 1rem;
-  width: 50%;
+  font-family: "Lora";
+  font-weight: 500;
+  font-size: 0.9rem;
+  width: 40%;
   color: black;
-  margin: auto;
   text-align: center;
   margin: 0 auto 0 auto;
 `;
 
 const StyledInsp = styled.p`
   background: white;
-  font-family: serif;
   font-size: 0.7rem;
-  width: 50%;
+  width: 40%;
   color: black;
-  margin: auto;
   text-align: center;
   margin: 0 auto 0 auto;
 `;
@@ -572,8 +595,6 @@ const ThrowWrapper = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 0.7rem;
-  padding: 0.3rem;
-
   & > div:nth-child(even) {
     background: rgba(58, 82, 118, 0.24);
   }
@@ -583,6 +604,7 @@ const SingleThrowWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 0.15rem;
   & > p {
     margin: 0;
   }
@@ -592,6 +614,7 @@ const StatFieldWrapper = styled.div`
   width: 32%;
   display: flex;
   flex-direction: column;
+  margin-top: 0.3rem;
 `;
 
 const DiverseStatWrapper = styled.div`

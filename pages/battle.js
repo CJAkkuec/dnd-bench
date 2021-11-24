@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import { Footer } from "/components/Footer";
 import { useLocalStorage } from "../utils/useLocalStorage";
+import { useEffect } from "react";
 
 export default function Battle({ getCurrentCharacter }) {
   const currentCharacter = getCurrentCharacter();
   const [count, setCount] = useLocalStorage("round", 0);
-  const characterHP =
-    currentCharacter !== undefined ? Number(currentCharacter.hp) : 0;
+  const [characterHP, setCharacterHP] = useLocalStorage("characterHP", null);
+
+  useEffect(() => {
+    if (currentCharacter?.hp) {
+      setCharacterHP(parseInt(currentCharacter.hp, 10));
+    }
+  }, [currentCharacter?.hp]);
 
   /*https://scotch.io/courses/10-react-challenges-beginner/adding-calculator */
 

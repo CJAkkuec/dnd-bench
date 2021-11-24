@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 import Collapsible from "react-collapsible";
 import { useForm, useFieldArray } from "react-hook-form";
+import { useState } from "react";
 import useFormPersist from "react-hook-form-persist";
+
+import { useSnackbar } from "notistack";
 
 import { Footer } from "/components/Footer";
 import { SpellSlot } from "../components/SpellSlot";
@@ -19,6 +22,13 @@ import classList from "../data/classes-data.json";
 import raceList from "../data/races-data.json";
 import alignList from "../data/alignm-data.json";
 
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+
 export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
   const {
     register,
@@ -29,6 +39,27 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
     reset,
     control,
   } = useForm({ defaultValues });
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [open, setOpen] = useState(false);
+
+  const handleReset = () => {
+    reset();
+    setOpen(false);
+    enqueueSnackbar("Form reset!", {
+      variant: "success",
+      autoHideDuration: 2000,
+    });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   //Input Field Arrays
 
@@ -111,17 +142,20 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
     setValue,
   });
 
-  const handleReset = () => {
-    if (confirm("Are you sure you want to reset the form?")) {
-      reset();
-    }
-  };
-
   const checkKeyDown = (e) => {
     if (e.code === "Enter") e.preventDefault();
   };
 
   //Form
+
+  //Reset only kinda works
+  const handleSubmitMiddleware = (...args) => {
+    try {
+      reset();
+    } finally {
+      onSubmit(...args);
+    }
+  };
 
   return (
     <>
@@ -149,7 +183,7 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
         )}
         <MainWrapper>
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(handleSubmitMiddleware)}
             onKeyDown={(e) => checkKeyDown(e)}
           >
             <StatField>
@@ -166,6 +200,7 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                       {...register("charname", { required: true })}
                       id="charname"
                       maxLength="50"
+                      autocomplete="off"
                     />
                   </Stat>
 
@@ -178,7 +213,7 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     >
                       {classList.map((classtype) => {
                         return (
-                          <option key={classtype.index} value={classtype.name}>
+                          <option key={classtype.name} value={classtype.name}>
                             {classtype.name}
                           </option>
                         );
@@ -869,12 +904,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => spellAppend({ selectedSpell: "" })}
                 >
                   Add Spell
-                </Button>
+                </StyledButton>
                 <FormWrapper>
                   {attackFields.map((field, index) => (
                     <AttackSlot
@@ -885,12 +920,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => attackAppend({ newAttack: "" })}
                 >
                   Add Attack
-                </Button>
+                </StyledButton>
               </Collapsible>
             </StatField>
             <StatField>
@@ -906,12 +941,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => featAppend({ selectedFeat: "" })}
                 >
                   Add Feature
-                </Button>
+                </StyledButton>
               </Collapsible>
             </StatField>
             <StatField>
@@ -926,12 +961,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => proficiencyAppend({ proficiencies: "" })}
                 >
                   Add Proficiencies
-                </Button>
+                </StyledButton>
                 <FormWrapper>
                   {languageFields.map((field, index) => (
                     <LanguageSlot
@@ -943,12 +978,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => languageAppend({ selectedLanguage: "" })}
                 >
                   Add Language
-                </Button>
+                </StyledButton>
               </Collapsible>
             </StatField>
 
@@ -965,12 +1000,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => basicItemAppend({ selectedItem: "" })}
                 >
                   Add Basic Item
-                </Button>
+                </StyledButton>
 
                 <FormWrapper>
                   {specialItemFields.map((field, index) => (
@@ -983,12 +1018,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => specialItemAppend({ selectedItem: "" })}
                 >
                   Add Special Item
-                </Button>
+                </StyledButton>
 
                 <FormWrapper>
                   {noteFields.map((field, index) => (
@@ -1000,12 +1035,12 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                     />
                   ))}
                 </FormWrapper>
-                <Button
+                <StyledButton
                   type="button"
                   onClick={() => noteAppend({ addedNote: "" })}
                 >
                   Add Note
-                </Button>
+                </StyledButton>
               </Collapsible>
             </StatField>
             <ButtonWrapper>
@@ -1014,10 +1049,31 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
               ) : (
                 <InputSubmit value="Submit" />
               )}
-              <InputReset onClick={() => handleReset()} value="Reset All" />
+              <InputReset onClick={() => handleClickOpen()} value="Reset All" />
             </ButtonWrapper>
           </form>
         </MainWrapper>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Are you sure you want to reset the form?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              This action can't be reverted.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={handleReset} autoFocus>
+              Reset
+            </Button>
+          </DialogActions>
+        </Dialog>
         <Footer />
       </MainStyle>
     </>
@@ -1050,6 +1106,7 @@ const InputSubmit = styled.input.attrs({ type: "submit" })`
   width: auto;
   font-size: 0.9rem;
   text-align: center;
+  cursor: pointer;
 `;
 
 const InputReset = styled.input.attrs({ type: "button" })`
@@ -1099,7 +1156,7 @@ const MainWrapper = styled.div`
   padding: 0 1rem 1rem 1rem;
 `;
 
-const Button = styled.button`
+const StyledButton = styled.button`
   background: rgba(58, 82, 118, 1);
   color: white;
   border: none;
@@ -1107,6 +1164,7 @@ const Button = styled.button`
   width: auto;
   font-size: 0.8rem;
   text-align: center;
+  cursor: pointer;
 `;
 
 const ButtonWrapper = styled.div`

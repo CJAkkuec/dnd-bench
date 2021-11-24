@@ -22,11 +22,6 @@ export const Footer = () => {
         <Link href="/bench">
           <li className={router.pathname == "/bench" ? "active" : ""}>Bench</li>
         </Link>
-        <Link href="/battle">
-          <li className={router.pathname == "/battle" ? "active" : ""}>
-            Battle Mode
-          </li>
-        </Link>
       </FooterList>
     </FooterWrapper>
   );
@@ -37,12 +32,12 @@ const FooterWrapper = styled.div`
   position: fixed;
   bottom: 0;
   z-index: 1;
-  box-shadow: 0px -2px 7px rgba(58, 82, 118, 0.24);
+  box-shadow: 0px -2px 7px rgba(58, 82, 118, 0.2);
 `;
 
 const FooterList = styled.ul`
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 2rem 1rem 2rem;
   display: flex;
   list-style-type: none;
   width: 100vw;
@@ -53,3 +48,9 @@ const li = styled.li`
   cursor: pointer;
   padding: 0.5rem;
 `;
+
+/*<Link href="/battle">
+          <li className={router.pathname == "/battle" ? "active" : ""}>
+            Battle Mode
+          </li>
+        </Link> */

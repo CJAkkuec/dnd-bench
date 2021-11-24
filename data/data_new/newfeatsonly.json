@@ -1,0 +1,248 @@
+{
+	"fileType": "feats-sublist",
+	"siteVersion": "1.142.0",
+	"items": [
+		{
+			"h": "aberrant%20dragonmark_erlw"
+		},
+		{
+			"h": "actor_phb"
+		},
+		{
+			"h": "alert_phb"
+		},
+		{
+			"h": "artificer%20initiate_tce"
+		},
+		{
+			"h": "athlete_phb"
+		},
+		{
+			"h": "bountiful%20luck_xge"
+		},
+		{
+			"h": "charger_phb"
+		},
+		{
+			"h": "chef_tce"
+		},
+		{
+			"h": "crossbow%20expert_phb"
+		},
+		{
+			"h": "crusher_tce"
+		},
+		{
+			"h": "defensive%20duelist_phb"
+		},
+		{
+			"h": "dragon%20fear_xge"
+		},
+		{
+			"h": "dragon%20hide_xge"
+		},
+		{
+			"h": "drow%20high%20magic_xge"
+		},
+		{
+			"h": "dual%20wielder_phb"
+		},
+		{
+			"h": "dungeon%20delver_phb"
+		},
+		{
+			"h": "durable_phb"
+		},
+		{
+			"h": "dwarven%20fortitude_xge"
+		},
+		{
+			"h": "eldritch%20adept_tce"
+		},
+		{
+			"h": "elemental%20adept_phb"
+		},
+		{
+			"h": "elven%20accuracy_xge"
+		},
+		{
+			"h": "fade%20away_xge"
+		},
+		{
+			"h": "fey%20teleportation_xge"
+		},
+		{
+			"h": "fey%20touched_tce"
+		},
+		{
+			"h": "fighting%20initiate_tce"
+		},
+		{
+			"h": "flames%20of%20phlegethos_xge"
+		},
+		{
+			"h": "gift%20of%20the%20chromatic%20dragon_ftd"
+		},
+		{
+			"h": "gift%20of%20the%20gem%20dragon_ftd"
+		},
+		{
+			"h": "gift%20of%20the%20metallic%20dragon_ftd"
+		},
+		{
+			"h": "grappler_phb"
+		},
+		{
+			"h": "great%20weapon%20master_phb"
+		},
+		{
+			"h": "gunner_tce"
+		},
+		{
+			"h": "healer_phb"
+		},
+		{
+			"h": "heavily%20armored_phb"
+		},
+		{
+			"h": "heavy%20armor%20master_phb"
+		},
+		{
+			"h": "infernal%20constitution_xge"
+		},
+		{
+			"h": "inspiring%20leader_phb"
+		},
+		{
+			"h": "keen%20mind_phb"
+		},
+		{
+			"h": "lightly%20armored_phb"
+		},
+		{
+			"h": "linguist_phb"
+		},
+		{
+			"h": "lucky_phb"
+		},
+		{
+			"h": "mage%20slayer_phb"
+		},
+		{
+			"h": "magic%20initiate_phb"
+		},
+		{
+			"h": "martial%20adept_phb"
+		},
+		{
+			"h": "medium%20armor%20master_phb"
+		},
+		{
+			"h": "metamagic%20adept_tce"
+		},
+		{
+			"h": "mobile_phb"
+		},
+		{
+			"h": "moderately%20armored_phb"
+		},
+		{
+			"h": "mounted%20combatant_phb"
+		},
+		{
+			"h": "observant_phb"
+		},
+		{
+			"h": "orcish%20fury_xge"
+		},
+		{
+			"h": "piercer_tce"
+		},
+		{
+			"h": "poisoner_tce"
+		},
+		{
+			"h": "polearm%20master_phb"
+		},
+		{
+			"h": "prodigy_xge"
+		},
+		{
+			"h": "resilient_phb"
+		},
+		{
+			"h": "revenant%20blade_erlw"
+		},
+		{
+			"h": "ritual%20caster_phb"
+		},
+		{
+			"h": "savage%20attacker_phb"
+		},
+		{
+			"h": "second%20chance_xge"
+		},
+		{
+			"h": "sentinel_phb"
+		},
+		{
+			"h": "shadow%20touched_tce"
+		},
+		{
+			"h": "sharpshooter_phb"
+		},
+		{
+			"h": "shield%20master_phb"
+		},
+		{
+			"h": "skill%20expert_tce"
+		},
+		{
+			"h": "skilled_phb"
+		},
+		{
+			"h": "skulker_phb"
+		},
+		{
+			"h": "slasher_tce"
+		},
+		{
+			"h": "spell%20sniper_phb"
+		},
+		{
+			"h": "squat%20nimbleness_xge"
+		},
+		{
+			"h": "svirfneblin%20magic_mtf"
+		},
+		{
+			"h": "tavern%20brawler_phb"
+		},
+		{
+			"h": "telekinetic_tce"
+		},
+		{
+			"h": "telepathic_tce"
+		},
+		{
+			"h": "tough_phb"
+		},
+		{
+			"h": "war%20caster_phb"
+		},
+		{
+			"h": "weapon%20master_phb"
+		},
+		{
+			"h": "wood%20elf%20magic_xge"
+		}
+	],
+	"sources": [
+		"ERLW",
+		"PHB",
+		"TCE",
+		"XGE",
+		"FTD",
+		"MTF"
+	]
+}

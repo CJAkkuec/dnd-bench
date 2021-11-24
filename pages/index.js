@@ -32,9 +32,9 @@ const Header = styled.div`
 
 const DnD = styled.p`
   color: red;
-  font-family: serif;
+  font-family: "Lora";
   font-size: 25pt;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
 `;
 
@@ -47,10 +47,10 @@ const Bench = styled.p`
 const DnDiv = styled.div`
   display: flex;
   align-items: baseline;
-  padding: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
   width: 100vw;
   z-index: 1;
-  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.24);
+  box-shadow: 0px 2px 7px rgba(58, 82, 118, 0.2);
 `;
 
 const Wrapper = styled.div`
