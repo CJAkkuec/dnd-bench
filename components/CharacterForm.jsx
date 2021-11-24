@@ -200,7 +200,7 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
                       {...register("charname", { required: true })}
                       id="charname"
                       maxLength="50"
-                      autocomplete="off"
+                      autoComplete="off"
                     />
                   </Stat>
 
@@ -1064,7 +1064,7 @@ export const CharacterForm = ({ onSubmit, defaultValues, isEditMode }) => {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              This action can't be reverted.
+              This action can&apos;t be reverted.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
