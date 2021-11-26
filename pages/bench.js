@@ -44,7 +44,7 @@ export default function Bench({
 
   useEffect(() => {
     checkForNewCharacter();
-  }, [checkForNewCharacter]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
