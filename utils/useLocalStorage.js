@@ -6,7 +6,7 @@ export function useLocalStorage(key, initialValue) {
     if (typeof window !== "undefined" && window.localStorage) {
       try {
         const item = window.localStorage.getItem(key);
-        setStoredValue(item ? JSON.parse(item) : initialValue);
+        setStoredValue(item !== undefined ? JSON.parse(item) : initialValue);
       } catch (error) {
         console.log(error);
       }
