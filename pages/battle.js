@@ -15,14 +15,13 @@ export default function Battle({ getCurrentCharacter }) {
         <Title>Battle Mode</Title>
         <Intro>
           This is your battle overview. Only the character marked as active can
-          participate in this mode. This feature will be implemented soon.
+          participate in this mode. This feature is a work in progress.
         </Intro>
         {isLoaded === false ? (
           <button onClick={loadBattleMode}>Load Battlemode</button>
         ) : (
           <BattleMode getCurrentCharacter={getCurrentCharacter} />
         )}
-
         <Footer />
       </MainStyle>
     </>

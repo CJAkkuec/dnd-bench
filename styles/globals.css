@@ -166,3 +166,7 @@ a {
   left: 18px;
   border-color: rgba(58, 82, 118, 1);
 }
+
+.RCP {
+  width: 100% !important;
+}
