@@ -106,7 +106,7 @@ export const BattleMode = ({ getCurrentCharacter }) => {
       {party !== null && visibility === false ? (
         <GroupDiv>
           {party?.partyMemberArray.map((member) => (
-            <MemberDiv>
+            <MemberDiv key={uuidv4}>
               <p>{member.partyMember}</p>
               <p>HP: {member.partyMemberCurrentHP}</p>
               <progress
@@ -173,11 +173,13 @@ export const BattleMode = ({ getCurrentCharacter }) => {
       <SpellWrapper>
         <Desc>Available Spells</Desc>
         {spellInformation.map((spell) => (
-          <Collapsible trigger={spell.name}>
-            <SpellDiv key={uuidv4}>
+          <Collapsible trigger={spell.name} key={uuidv4}>
+            <SpellDiv>
               {Object.keys(spell).map((key) =>
                 ["page", "name"].includes(key) ? null : (
-                  <p>{`${prettySpellKeys[key] || key}: ${spell[key]}`}</p>
+                  <p key={uuidv4}>{`${prettySpellKeys[key] || key}: ${
+                    spell[key]
+                  }`}</p>
                 )
               )}
             </SpellDiv>
