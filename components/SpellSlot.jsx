@@ -28,9 +28,7 @@ export const SpellSlot = ({ register, index, watch, spellRemove }) => {
           {selectedSpell ? (
             <SpellSlotContainer>
               <Collapsible trigger="Spell Details">
-                <div
-                  dangerouslySetInnerHTML={{ __html: selectedSpell.desc }}
-                ></div>
+                <p>{selectedSpell.desc}</p>
                 <p>Components: {selectedSpell.components}</p>
                 <p>Range: {selectedSpell.range}</p>
               </Collapsible>
