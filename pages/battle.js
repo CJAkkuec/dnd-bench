@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Footer } from "/components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BattleMode } from "../components/BattleMode";
 
 export default function Battle({ getCurrentCharacter }) {
@@ -16,6 +16,9 @@ export default function Battle({ getCurrentCharacter }) {
         <Intro>
           This is your battle overview. Only the character marked as active can
           participate in this mode. This feature is a work in progress.
+          <p style={{ color: "red" }}>
+            Warning: If you close this tab, you will lose your current party.
+          </p>
         </Intro>
         {isLoaded === false ? (
           <button onClick={loadBattleMode}>Load Battlemode</button>
