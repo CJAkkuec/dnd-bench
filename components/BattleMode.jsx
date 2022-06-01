@@ -1,5 +1,5 @@
 import { useLocalStorage } from "../utils/useLocalStorage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import spellList from "../data/spell-data.json";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
@@ -22,6 +22,7 @@ export const BattleMode = ({ getCurrentCharacter }) => {
     watch,
     formState: { errors },
     setValue,
+    getValues,
     reset,
     control,
   } = useForm();
@@ -100,6 +101,10 @@ export const BattleMode = ({ getCurrentCharacter }) => {
     school: "School",
     domains: "Domains",
   };
+
+  useEffect(() => {
+    partyMemberAppend({ PartyMember: "" });
+  }, []);
 
   return (
     <>
