@@ -328,7 +328,7 @@ export const BattleMode = ({ getCurrentCharacter }) => {
             <span>This is your battle log</span>
             <MessageDiv>
               {messages.map((message) => {
-                return <p>{message}</p>;
+                return <p key={uuidv4}>{message}</p>;
               })}
             </MessageDiv>
             <button
