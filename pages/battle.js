@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Footer } from "/components/Footer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BattleMode } from "../components/BattleMode";
 
 export default function Battle({ getCurrentCharacter }) {
@@ -12,13 +12,10 @@ export default function Battle({ getCurrentCharacter }) {
   return (
     <>
       <MainStyle>
-        <Title>Battle Mode</Title>
+        <Title>Battle Mode: Player Perspective</Title>
         <Intro>
           This is your battle overview. Only the character marked as active can
           participate in this mode. This feature is a work in progress.
-          <p style={{ color: "red" }}>
-            Warning: If you close this tab, you will lose your current party.
-          </p>
         </Intro>
         {isLoaded === false ? (
           <button onClick={loadBattleMode}>Load Battlemode</button>
@@ -50,17 +47,4 @@ const Intro = styled.div`
   margin: 1rem;
   padding: 0.4rem;
   font-size: 0.8rem;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: auto auto 5rem auto;
-  width: 80vw;
-  gap: 1rem;
-
-  & > p {
-    font-size: 0.8rem;
-    color: grey;
-  }
 `;
