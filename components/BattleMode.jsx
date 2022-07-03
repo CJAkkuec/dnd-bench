@@ -252,21 +252,21 @@ export const BattleMode = ({ getCurrentCharacter }) => {
   return (
     <>
       <MainWrapper>
-        <button
+        <StyledButton
           onClick={() => {
             setSilentMode(!silentMode);
           }}
         >
           {silentMode === true ? "Silent Mode Is On" : "Silent Mode Is Off"}
-        </button>
+        </StyledButton>
         <PartyField>
-          <button
+          <AddButton
             onClick={() => {
               setIsActive(!isActive);
             }}
           >
             {isActive === false ? "Add Character" : "Hide"}
-          </button>
+          </AddButton>
           {isActive === true ? (
             <PartyFormWrapper>
               <PartyMemberForm
@@ -282,22 +282,24 @@ export const BattleMode = ({ getCurrentCharacter }) => {
               />
             </PartyFormWrapper>
           ) : null}
-          <button
-            onClick={() => {
-              setSortByInitiative(true);
-              setSortByCurrentHP(false);
-            }}
-          >
-            Sort by Initiative
-          </button>
-          <button
-            onClick={() => {
-              setSortByInitiative(false);
-              setSortByCurrentHP(true);
-            }}
-          >
-            Sort by HP
-          </button>
+          <ButtonWrapper>
+            <StyledButton
+              onClick={() => {
+                setSortByInitiative(true);
+                setSortByCurrentHP(false);
+              }}
+            >
+              Sort by Initiative
+            </StyledButton>
+            <StyledButton
+              onClick={() => {
+                setSortByInitiative(false);
+                setSortByCurrentHP(true);
+              }}
+            >
+              Sort by HP
+            </StyledButton>
+          </ButtonWrapper>
           <StyledWrapper>
             {partyMembers !== undefined
               ? sortedPartyMembers.map((partyMember) => (
@@ -317,12 +319,12 @@ export const BattleMode = ({ getCurrentCharacter }) => {
         <BattleWrapper>
           <BattleDiv>
             Battle Timer: {count}
-            <button type="button" onClick={() => handleCount()}>
+            <StyledButton type="button" onClick={() => handleCount()}>
               Next Round
-            </button>
-            <button type="button" onClick={() => setCount(0)}>
+            </StyledButton>
+            <StyledButton type="button" onClick={() => setCount(0)}>
               Reset
-            </button>
+            </StyledButton>
           </BattleDiv>
           <MessageWrapper>
             <span>This is your battle log</span>
@@ -331,13 +333,13 @@ export const BattleMode = ({ getCurrentCharacter }) => {
                 return <p key={uuidv4}>{message}</p>;
               })}
             </MessageDiv>
-            <button
+            <StyledButton
               onClick={() => {
                 setMessages([]);
               }}
             >
               Reset
-            </button>
+            </StyledButton>
           </MessageWrapper>
         </BattleWrapper>
 
@@ -347,12 +349,14 @@ export const BattleMode = ({ getCurrentCharacter }) => {
             <div>Current HP: {currentHP}</div>
             <HPCalcDiv>
               <input type="number" id="addInt" />
-              <button type="button" onClick={addHP}>
-                +
-              </button>
-              <button type="button" onClick={subHP}>
-                -
-              </button>
+              <ButtonWrapper>
+                <StyledButton type="button" onClick={addHP}>
+                  +
+                </StyledButton>
+                <StyledButton type="button" onClick={subHP}>
+                  -
+                </StyledButton>
+              </ButtonWrapper>
             </HPCalcDiv>
           </HPDiv>
           <SpellWrapper>
@@ -375,6 +379,28 @@ export const BattleMode = ({ getCurrentCharacter }) => {
   );
 };
 
+const StyledButton = styled.button`
+  background: rgba(58, 82, 118, 1);
+  color: white;
+  border: none;
+  padding: 0.4rem;
+  width: auto;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const AddButton = styled.button`
+  background: rgba(58, 82, 118, 0.24);
+  color: white;
+  border: none;
+  padding: 0.4rem;
+  width: auto;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+`;
+
 const StyledWrapper = styled.div`
   margin-top: 1rem;
   width: 100%;
@@ -385,7 +411,7 @@ const StyledWrapper = styled.div`
 `;
 
 const MainWrapper = styled.div`
-  width: 80%;
+  width: 90%;
   margin: auto auto 4rem auto;
 `;
 
@@ -438,6 +464,9 @@ const BattleDiv = styled.div`
 `;
 
 const PartyField = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
   padding: 0.5rem;
   margin-top: 1rem;
   background: rgba(58, 82, 118, 0.24);
@@ -474,6 +503,7 @@ const MessageDiv = styled.div`
   flex-direction: column;
   padding: 1rem;
   background: white;
+  font-size: 0.8rem;
   max-height: 200px;
   overflow: scroll;
   & p {
@@ -484,7 +514,7 @@ const MessageDiv = styled.div`
 const MessageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
 
   & span {
     background: rgba(58, 82, 118, 0.24);
@@ -496,8 +526,13 @@ const MessageWrapper = styled.div`
 
 const BattleWrapper = styled.div`
   display: flex;
-  max-height: 200px;
+  max-height: 250px;
   margin: 1rem auto;
   padding: 1rem;
   background: rgba(58, 82, 118, 0.24);
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 0.3rem;
 `;

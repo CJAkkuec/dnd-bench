@@ -37,20 +37,20 @@ export const PartyMemberContainer = ({
           <>
             <PartyMemberSlot partyMember={partyMember} />
             <ButtonDiv>
-              <button
+              <StyledButton
                 onClick={() => {
                   setEditMode(true);
                 }}
               >
                 Edit
-              </button>
-              <button
+              </StyledButton>
+              <StyledButton
                 onClick={() => {
                   handleClickOpen();
                 }}
               >
                 Delete
-              </button>
+              </StyledButton>
             </ButtonDiv>
           </>
         ) : (
@@ -112,4 +112,16 @@ const ButtonDiv = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  gap: 0.3rem;
+`;
+
+const StyledButton = styled.button`
+  background: rgba(58, 82, 118, 1);
+  color: white;
+  border: none;
+  padding: 0.4rem;
+  width: auto;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
 `;
