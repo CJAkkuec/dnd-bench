@@ -22,6 +22,11 @@ export const Footer = () => {
         <Link href="/bench">
           <li className={router.pathname == "/bench" ? "active" : ""}>Bench</li>
         </Link>
+        <Link href="/battle">
+          <li className={router.pathname == "/battle" ? "active" : ""}>
+            Battle Mode
+          </li>
+        </Link>
       </FooterList>
     </FooterWrapper>
   );

@@ -30,6 +30,11 @@ export const Dash = ({ bench }) => {
             <ItemP>Character Bench</ItemP>
           </Link>
         </DashItem>
+        <DashItem>
+          <Link passHref href="/battle">
+            <ItemP>BattleMode</ItemP>
+          </Link>
+        </DashItem>
       </DashDiv>
     </>
   );
@@ -53,9 +58,3 @@ const ItemP = styled.p`
   margin: 0;
   word-wrap: break-word;
 `;
-
-/*  <DashItem>
-          <Link passHref href="/battle">
-            <ItemP>Battle Mode</ItemP>
-          </Link>
-        </DashItem> */
