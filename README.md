@@ -1,5 +1,8 @@
 ## Welcome to D&D//Bench, the D&D Character Management App
 
+**WIP**
+
+
 Here's a brief overview of what you can use the app for:
 
 - creating multiple characters ✨
